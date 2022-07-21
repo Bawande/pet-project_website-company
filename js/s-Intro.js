@@ -1,5 +1,5 @@
 // fullscrin slider
-const fullWidthSwiper = document.querySelector('.fw-sp')
+const fullWidthSwiper = document.querySelector('.bgr-swiper')
 
 let firstSwiper = new Swiper(fullWidthSwiper, {
 
@@ -12,7 +12,7 @@ let firstSwiper = new Swiper(fullWidthSwiper, {
 });
 
 // small slider
-const navigationSwiper = document.querySelector('.nv-sp')
+const navigationSwiper = document.querySelector('.nav-swiper')
 
 let secondSwiper = new Swiper(navigationSwiper, {
 
@@ -20,23 +20,26 @@ let secondSwiper = new Swiper(navigationSwiper, {
 	spaceBetween: 0,
 
 	navigation: {
-		prevEl: '.nv-sp-btn-prv',
-		nextEl: '.nv-sp-btn-nxt',
+		prevEl: '.nav-swiper__btn-prv',
+		nextEl: '.nav-swiper__btn-nxt',
 	},
 
 	scrollbar: {
-		el: '.nv-sp-scrlbr',
+		el: '.nav-swiper__scroll-bar',
 		draggable: true,
 	},
 
 	pagination: {
-		el: '.nv-sp-pgn',
+		el: '.nav-swiper__pagination',
 		// type: 'fraction',
 		type: 'custom',
 		renderCustom: function (sp, cr, tt) {
 			let indT = tt >= 10 ? cr : `0${tt}`
 			let indC = cr >= 10 ? cr : `0${cr}`
-			return `<span>${indC}</span><span">/${indT}</spanss=>`
+			return `
+			<span>${indC}</span>
+			<span>/${indT}</span>
+			`
 		}
 	},
 

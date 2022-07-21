@@ -122,76 +122,82 @@
 			<div class="intro__container">
 				<!--  -->
 				<!-- Slider first main container -->
-				<div class="swiper fw-sp">
+				<div class="swiper bgr-swiper">
 					<!-- Additional required wrapper -->
-					<div class="swiper-wrapper fw-sp-wrp">
+					<div class="swiper-wrapper bgr-swiper__wrap">
 						<!-- Slides -->
-						<div class="swiper-slide fw-sp-sld"> <img src="./img/header-slider_img-01.jpg" alt=""></div>
+						<div class="swiper-slide bgr-swiper__slide"> <img src="./img/header-slider_img-01.jpg" alt="">
+						</div>
 						<!-- Slides -->
-						<div class="swiper-slide fw-sp-sld"> <img src="./img/header-slider_img-02.jpg" alt=""></div>
+						<div class="swiper-slide bgr-swiper__slide"> <img src="./img/header-slider_img-02.jpg" alt="">
+						</div>
 						<!-- Slides -->
-						<div class="swiper-slide fw-sp-sld"> <img src="./img/header-slider_img-01.jpg" alt=""></div>
+						<div class="swiper-slide fw-sp-sld bgr-swiper__slide"> <img src="./img/header-slider_img-01.jpg"
+								alt=""></div>
 					</div>
 
-					<!-- Slider second main container -->
-					<div class="swiper nv-sp">
-						<!-- Additional required wrapper -->
-						<div class="swiper-wrapper nv-sp-wrp">
+				</div>
+				<!-- Slider second main container -->
+				<div class="swiper  nav-swiper">
+					<!-- Additional required wrapper -->
+					<div class="swiper-wrapper  nav-swiper__wrap">
 
-							<!-- Slides -->
-							<div class="swiper-slide nv-sp-sld">
+						<!-- Slides -->
+						<div class="swiper-slide  nav-swiper__slide">
 
-								<div class="intro__content-wrapper">
-									<h2 class="title title--h2"> Контрактное производство </h2>
-									<p class="text text__basis">
-										Любые химические продукты, дезинфицирующие средства и&nbsp;различные продукты
-										бытовой и&nbsp;промышленной химии.
-									</p>
-								</div>
-							</div>
-							<!-- Slides -->
-							<div class="swiper-slide nv-sp-sld">
-
-								<div class="intro__content-wrapper">
-									<h2 class="title title--h2"> Контрактное производство </h2>
-									<p class="text text__basis">
-										Любые химические продукты, дезинфицирующие средства и&nbsp;различные продукты
-										бытовой и&nbsp;промышленной химии.
-									</p>
-								</div>
-							</div>
-							<!-- Slides -->
-							<div class="swiper-slide nv-sp-sld">
-
-								<div class="intro__content-wrapper">
-									<h2 class="title title--h2"> Контрактное производство </h2>
-									<p class="text text__basis">
-										Любые химические продукты, дезинфицирующие средства и&nbsp;различные продукты
-										бытовой и&nbsp;промышленной химии.
-									</p>
-								</div>
+							<div class="nav-swiper__content-wrap">
+								<h2 class="title title--h2"> Контрактное производство </h2>
+								<p class="text text__basis">
+									Любые химические продукты, дезинфицирующие средства и&nbsp;различные продукты
+									бытовой и&nbsp;промышленной химии.
+								</p>
 							</div>
 						</div>
-						<!-- Navigation -->
-						<div class="nv-sp-navigation-wrapper">
+						<!-- Slides -->
+						<div class="swiper-slide  nav-swiper__slide">
 
-							<div class="nv-sp-btn-wrapper">
-								<!-- If we need navigation buttons -->
-								<div class="swiper-button-prev nv-sp-btn-prv"></div>
-								<div class="swiper-button-next nv-sp-btn-nxt"></div>
+							<div class="nav-swiper__content-wrap">
+								<h2 class="title title--h2"> Контрактное производство </h2>
+								<p class="text text__basis">
+									Любые химические продукты, дезинфицирующие средства и&nbsp;различные продукты
+									бытовой и&nbsp;промышленной химии.
+								</p>
 							</div>
-
-							<div class="nv-sp-scrbr-wrapper">
-								<!-- If we need scrollbar -->
-								<div class="swiper-scrollbar nv-sp-scrlbr"></div>
-							</div>
-
-							<!-- If we need pagination -->
-							<div class="swiper-pagination nv-sp-pgn"></div>
 						</div>
+						<!-- Slides -->
+						<div class="swiper-slide  nav-swiper__slide">
+
+							<div class="nav-swiper__content-wrap">
+								<h2 class="title title--h2"> Контрактное производство </h2>
+								<p class="text text__basis">
+									Любые химические продукты, дезинфицирующие средства и&nbsp;различные продукты
+									бытовой и&nbsp;промышленной химии.
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- Navigation -->
+					<div class="nav-swiper__nav-wrap">
+
+						<!-- If we need scrollbar -->
+						<!-- If we need pagination -->
+						<div class="nav-swiper__small-nav-bar small-nav-bar">
+							<div class="nav-swiper__scroll-wrap small-nav-bar__scroll-wrap">
+								<div class="swiper-scrollbar nav-swiper__scroll-bar small-nav-bar__scroll-bar">
+								</div>
+							</div>
+							<div class="swiper-pagination nav-swiper__pagination small-nav-bar__pagination">
+							</div>
+						</div>
+
+						<!-- If we need navigation buttons -->
+						<div class="nav-swiper__btn-wrap">
+							<div class="swiper-button-prev nav-swiper__btn-prv"></div>
+							<div class="swiper-button-next nav-swiper__btn-nxt"></div>
+						</div>
+
 					</div>
 				</div>
-
 			</div>
 		</section>
 
@@ -1518,8 +1524,7 @@
 
 		<div class="mcrmdl-overlay" tabindex="-1" data-custom-close>
 			<!-- modal style -->
-			<div class="modal-product-order mcrmdl-container" role="dialog" aria-modal="true"
-				aria-labelledby="modal-product-order-title">
+			<div class="modal-product-order mcrmdl-container" role="dialog" aria-modal="true">
 
 				<button class="mcrmdl-close modal-product-order__close btn-close" aria-label="Закрытие диалогового окна"
 					data-custom-close></button>
@@ -1599,8 +1604,7 @@
 
 		<div class="mcrmdl-overlay" tabindex="-1" data-custom-close>
 
-			<div class="modal-company-news mcrmdl-container" role="dialog" aria-modal="true"
-				aria-labelledby="modal-company-news-title">
+			<div class="modal-company-news mcrmdl-container" role="dialog" aria-modal="true">
 
 				<button class="mcrmdl-close modal-company-news__close btn-close" aria-label="Закрытие диалогового окна"
 					data-custom-close></button>
@@ -1658,8 +1662,7 @@
 
 		<div class="mcrmdl-overlay" tabindex="-1" data-custom-close>
 			<!-- modal style -->
-			<div class="modal-product-card mcrmdl-container" role="dialog" aria-modal="true"
-				aria-labelledby="modal-product-card-title">
+			<div class="modal-product-card mcrmdl-container" role="dialog" aria-modal="true">
 
 				<button class="mcrmdl-close modal-product-card__close btn-close" aria-label="Закрытие диалогового окна"
 					data-custom-close></button>
@@ -1789,8 +1792,7 @@
 
 		<div class="mcrmdl-overlay" tabindex="-1" data-custom-close>
 			<!-- modal style -->
-			<div class="mcrmdl-container modal-callback" role="dialog" aria-modal="true"
-				aria-labelledby="modal-callback-title">
+			<div class="mcrmdl-container modal-callback" role="dialog" aria-modal="true">
 
 				<button class="mcrmdl-close modal-callback__close btn-close" aria-label="Закрытие диалогового окна"
 					data-custom-close></button>

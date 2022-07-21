@@ -1,0 +1,128 @@
+// --------------- секция преимущества
+
+.advantages {
+	background-color: var(--clr-haze);
+
+	&__container {
+		padding-top: 128px;
+		padding-bottom: 128px;
+	}
+
+	&__title {
+		margin-bottom: 48px;
+	}
+
+	&__swiper {
+		height: 732px;
+		// overflow: visible !important;
+	}
+
+	&__list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&__slide {
+		height: 366px;
+	}
+
+	&__content-wrap {
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		padding: 16px;
+	}
+
+	&__item {
+		
+		width: 100%;
+		height: 100%;
+		background-color: var(--clr-white);
+		box-shadow: 0px 5px 16px rgba(0, 0, 0, 0.05);
+		border-radius: 4px;
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		align-items: center;
+		padding: 15% 10% 10%;
+	}
+
+	&__item--last{
+		color: var(--clr-white);
+		background-color: var(--clr-accent);
+		justify-content: center;
+	}
+	
+	&__item--last &__messange{
+		margin-bottom: 44px;
+	}
+
+	&__ico {
+		width: 90px;
+		height: 90px;
+		margin-bottom: 32px;
+		// overflow: hidden;
+	}
+
+	&__ico img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: center center;
+	}
+
+	&__messange {
+		text-align: center;
+		max-width: 305px;
+		max-height: 130px;
+		overflow: hidden;
+	}
+
+	&__btn-wrapper {
+		display: none;
+	}
+
+	@media (max-width: 1024px){
+
+		&__swiper {
+			height: 1098px;
+		}
+	}
+
+	@media (max-width: 768px){
+		
+		&__slide {
+			height: 392px;
+		}
+
+		&__swiper {
+			height: 1176px;
+		}
+
+		&__messange {
+			max-height: 162px;
+		}
+
+
+	}
+
+	@media (max-width: 576px){
+
+		&__swiper {
+			height: 360px;
+		}
+
+		&__messange {
+			max-height: 130px;
+		}
+		&__btn-wrapper {
+			margin-top: 24px;
+			height: 40px;
+			padding: 0 16px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+}

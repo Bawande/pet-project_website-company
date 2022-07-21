@@ -1,0 +1,263 @@
+// -------------- секция подвал footer
+
+.bottom-nav {
+	
+	background: linear-gradient(90deg, #6DC1F4 0%, #3F9CD5 100%);
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		
+		padding-top: 91px;
+		padding-bottom: 72px;
+		color: var(--clr-white);
+	}
+
+	&__brand {
+		flex-basis: 280px;
+		margin-right: 15px;
+	}
+
+	&__menu {
+		flex-basis: 625px;
+		flex-shrink: 0;
+		margin-right: 15px;
+	}
+
+	&__output {
+		flex-basis: 305px;
+	}
+
+	// ---- media start ----
+
+	@media screen and (max-width: 1024px){
+		
+		&__container {
+		flex-wrap: wrap;
+		}
+
+		&__brand {
+			flex-basis: 100%;
+			margin-right: 0;
+		}
+	
+	}
+
+	@media screen and (max-width: 980px){
+		
+		&__container {
+			justify-content: flex-start;
+			
+		}
+
+		&__brand{
+			flex-wrap: wrap;
+		}
+
+		&__menu {
+			flex-basis: auto;
+			margin-right: 0;
+			margin-bottom: 72px;
+			flex-shrink: 1;
+		}
+
+		&__output {
+			flex-basis: auto;
+		}
+	
+	}
+
+	@media screen and (max-width: 650px){
+
+		&__brand{
+			flex-basis: 100%;
+		}
+
+		&__menu {
+			flex-basis: 100%;
+		}
+
+		&__output {
+			flex-basis: 100%;
+		}
+	}
+
+	@media screen and (max-width: 320px){
+
+	
+	}
+
+}
+
+// ------------------------------------- 
+.btm-brand {
+
+	&__logo {
+		position: relative;
+		top: -30px;
+		// margin-bottom: 15px;
+	}
+
+	@media screen and (max-width: 1024px){
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		
+		margin-bottom: 80px;
+
+		&__logo {
+			top: 0;
+			width: 364px;
+		}
+		
+		&__details {
+			width: 385px;
+		}
+
+		&__details img,
+		&__logo img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+	}
+
+	@media screen and (max-width: 800px){
+		
+		justify-content: flex-start;
+
+		&__logo {
+			width: 265px;
+			margin-right: 90px;
+		}
+		
+		&__details {
+			width: 320px;
+		}
+	}
+
+	@media screen and (max-width: 650px){
+		
+		justify-content: center;
+		
+		margin-bottom: 56px;
+		
+		&__logo {
+			width: 320px;
+			margin-right: 0;
+			margin-bottom: 42px;
+		}
+		
+		// &__details {
+		// }
+	}
+
+	@media screen and (max-width: 320px){
+		
+		margin-bottom: 48px;
+		
+		&__logo {
+			width: 250px;
+			margin-bottom: 48px;
+		}
+		
+		&__details {
+			width: 250px;
+		}
+	}
+
+}
+
+// ------------------------------------- 
+.btm-menu {
+
+	&__list{
+		column-width: 265px;
+		column-count: 2;
+		column-gap: 5%;
+	}
+
+	&__item {
+		font-family: var(--ff-basis);
+		font-style: normal;
+		font-weight: 400;
+		font-size: 15px;
+		line-height: 1.5;
+		margin-bottom: 16px;	
+	}
+	
+	
+	@media screen and (max-width: 980px){
+		
+		&__list{
+			column-width: 265px;
+			column-gap: 90px;
+		}
+	}
+
+	@media screen and (max-width: 650px){
+		
+		&__list{
+			margin: 0 auto;
+			column-count: 1;
+			column-gap: 0;
+			text-align: center;
+		}
+	}
+
+
+}
+
+// ------------------------------------- 
+.output {
+	font-family: var(--ff-basis);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 1.35;
+
+	&__info {
+		display: flex;
+		align-items: center;
+		margin-bottom: 45px;
+	}
+
+	&__info span {
+		margin-left: 17px;
+	}
+
+	&__details span:not(:last-child) {
+		display: block;
+		margin-bottom: 4px;
+	}
+	
+	@media screen and (max-width: 980px){
+		display: flex;
+
+		&__details {
+			margin-right: 65px;
+		}
+
+		&__info{
+			order: 1;
+		}
+
+	}
+
+	@media screen and (max-width: 650px){
+		flex-direction: column;
+		align-items: center;
+
+		&__details {
+			margin-right: 0;
+			text-align: center;
+		}
+
+		&__info{
+			order: 0;
+			margin-bottom: 32px;
+		}
+
+	}
+}

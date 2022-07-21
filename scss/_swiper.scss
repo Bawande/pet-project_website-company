@@ -1,0 +1,29 @@
+// общие стили кнопок для навигации
+
+.swiper-button-next, 
+.swiper-button-prev {
+	--swiper-navigation-size: 16px;
+	--swiper-theme-color: var(--clr-accent);
+	position: static !important;
+	font-weight: 700;
+	background-color: var(--clr-white);
+	width: 40px !important;
+	height: 40px !important;
+	border-radius: 100%;
+	transition: color 0.35s cubic-bezier(0.6, 0.05, 0.28, 0.91), background-color 0.35s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+}
+
+.swiper-button-next:hover, 
+.swiper-button-prev:hover {
+	--swiper-theme-color: var(--clr-white);
+	background-color: var(--clr-accent);
+}
+
+
+
+
+
+
+
+
+

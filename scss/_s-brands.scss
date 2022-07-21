@@ -1,0 +1,56 @@
+// --------------- секция бренды 
+.brands {
+
+	&__container{
+		padding-top: 128px;
+	}
+
+	&__header {
+		margin-bottom: 48px;
+	}
+
+	&__content-wrapper {
+		box-sizing: border-box;
+		width: 100%;
+		height: 100%;
+		padding: 64px 128px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__logo {
+		flex-basis: 415px;
+		overflow: hidden;
+		margin-right: 15px;
+
+	}
+	&__logo img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: center center;
+	}
+
+	&__description {
+		flex-basis: 515px;
+	}
+}
+
+// ---------------------- swiper сеции бренд --------------------------
+.br-sp{
+	width: 100%;
+	height: 376px;
+	background-color: var(--clr-white);
+	border-radius: 4px;
+	box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.05);
+}
+
+.br-sp-btn-wrapper{
+	width: 92px;
+	height: 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

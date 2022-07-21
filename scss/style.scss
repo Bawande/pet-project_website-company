@@ -1,0 +1,458 @@
+:root {
+	//------------------
+	--clr-white: #ffffff;
+	--clr-haze: #f7f9fa;
+	--clr-accent: #009fe3;
+	--clr-accent--light: #a1daf8;
+	--clr-accent--dark: #0087c2;
+	--clr-dark: #0c131d;
+	--clr-smalt--light: #557d8e;
+	//----------------
+	--ff-basis: "OpenSans-Gl", sans-serif ;
+	--ff-accent: "SourceSansPro-Gl", sans-serif;
+	//container seting
+	--container-width: 1312px;
+	--container-offset: 15px;
+	// --container-min: unquote('min(calc(var(--container-width) - (var(--container-offset)*2)), 100%)');
+
+	--tr-transformAll: all 0.35s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+	--tr-transform: 0.35s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+}
+
+// ------------------------------------------------------------------
+@import "normalize";
+@import "reset";
+@import "fonts";
+@import "used";
+@import "swiper";
+
+
+@import "../libs/sidebar";
+
+// ------------------------------------------------------------------
+* {
+	// prevent tap highlight color
+	-webkit-tap-highlight-color:rgba(0,0,0,0); 
+	// prevent copy paste, to allow, change 'none' to 'text'
+	// -webkit-user-select:none;
+}
+
+.show{
+	display: block;
+}
+
+.btn{
+	display: inline-block;
+	font-family: var(--ff-basis);
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 1.5;
+
+	background-color: var(--clr-accent);
+	color: var(--clr-white);
+	padding: 16px 30px;
+	border: none;
+	text-decoration: none;
+	border-radius: 4px;
+	box-shadow: 0px 0px 10px rgba(0, 66, 114, 0.2);
+	cursor: pointer;
+	transition: background-color .3s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+	
+	&:hover,
+	&:active{
+		background: var(--clr-accent--dark);
+	}
+	&--eversion{
+		background: var(--clr-white);
+		color: var(--clr-accent);
+	}
+	&__callback{
+		padding: 16px 32px 16px 24px;
+	}
+	&__callback::before{
+		content: '';
+		display: inline-block;
+		margin-right: 8px;
+		width: 16px;
+		height: 16px;
+		background-image: url(../img/input-ico/phone-white.svg);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	&--eversion:hover,
+	&--eversion:active{
+		background: var(--clr-haze);
+	}
+	&--eversion::before{
+		background-image: url(../img/input-ico/phone-accent.svg);
+	}
+}
+
+.title, h2, h3, h4{
+	font-family: var(--ff-accent);
+	font-weight: 700;
+	align-self: stretch;
+	
+	&--h2, h2, h1{
+		font-size: 40px;
+		line-height: 1.25;
+	}
+	
+	&--h3, h3{
+		font-size: 20px;
+		line-height: 1.25;
+	}
+	
+	&--h4, h4{
+		font-family: var(--ff-basis);
+		font-size: 16px;
+		line-height: 1.5;
+	}
+
+	&--call{
+		font-size: 24px;
+		line-height: 1.25;
+	}
+}
+
+.text{
+	font-family: var(--ff-basis);
+	font-weight: 400;
+	// color: var(--clr-dark);
+
+	&__basis{
+		font-size: 16px;
+		line-height: 1.65;	
+	}
+	&__note{
+		font-size: 12px;
+		line-height: 1.35;
+		color: var(--clr-smalt--light);
+	}
+
+	& li {
+		list-style-type: none;
+		padding-left: 21px;
+		position: relative;
+	}
+
+	& li:not(:last-child) {
+		margin-bottom: 8px;
+	}
+
+	& li::before {
+		content: '';
+		display: inline-block;
+		width: 7px;
+		height: 7px;
+		background-color: var(--clr-smalt--light);
+
+		position: absolute;
+		top: 10px;
+		left: 0;
+	}
+
+	& p:not(:last-child) {
+		margin-bottom: 16px;
+		}
+}
+
+.btn-open-menu,
+.btn-close-menu{
+	width: 56px;
+	height: 56px;	
+	padding: 21px 18px;
+	background-color: var(--clr-white);
+	border-radius: 4px;
+	box-shadow: 0px 0px 10px rgba(0, 66, 114, 0.1);
+	&:focus{
+		user-select: none;
+		outline: none;
+	}
+	@media(hover: hover) and (pointer: fine) {
+		&:hover,
+		&:hover.active{
+			background-color: var(--clr-accent);
+		}
+		&:hover span,
+		&:hover.active span{
+			background-color: var(--clr-white);
+		}
+		&:hover span:nth-child(2){
+			width: 100%;
+		}
+	}
+}
+
+.btn-close{
+	
+	text-align: center;
+	width: 40px;
+	height: 40px;	
+	background-color: var(--clr-white);
+	background-color: var(--clr-haze);
+	border-radius: 100%;
+	color: var(--clr-smalt--light);
+	transition: background-color .3s cubic-bezier(0.6, 0.05, 0.28, 0.91), color .3s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+	
+	&::before{
+		content: "\2715";
+		font-family: inherit;
+		font-size: 21px;
+		line-height: 40px;
+	}
+
+	&:focus{
+		user-select: none;
+		outline: none;
+	}
+
+	@media(hover: hover) and (pointer: fine) {
+		
+		&:hover,
+		&:hover.active{
+			background-color: var(--clr-accent);
+			color: var(--clr-white);
+		}
+	}
+}
+
+// ------------------------------------------------------------------
+
+.link{
+	font-family: var(--ff-basis);
+	display: inline-block;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.6;
+	color: var(--clr-accent);
+	border-bottom: 1px dashed transparent;
+	transition: border-color .3s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+	cursor: pointer;
+	
+	&:hover{
+	color: var(--clr-accent--dark);
+	}
+}
+
+
+
+// ------------------------------------------------------------------
+
+.input-wrap__ico{
+	
+	position: relative;
+	display: block;
+
+	&::before{
+		content: "";
+		display: block;
+		width: 16px;
+		height: 16px;
+		position: absolute;
+		top: 20px;
+		left: 24px;
+	}
+
+	&--name::before{
+		background-image: url(../img/input-ico/user-accent.svg);
+	}
+
+	&--tel::before{
+		background-image: url(../img/input-ico/phone-accent.svg);
+	}
+
+	&--email::before{
+		background-image: url(../img/input-ico/mail-accent.svg);
+	}
+
+	&--question::before{
+		background-image: url(../img/input-ico/message-square-accent.svg);
+	}
+}
+
+.input-wrap__ico {
+
+	& input,
+	textarea {
+	display: block;
+	width: 100%;
+	height: 56px;
+	padding: 16px 55px;
+	font-family: inherit;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--clr-dark);
+	background-color: var(--clr-haze);
+	background-clip: padding-box;
+	border-radius: 4px;
+	}
+
+	& textarea{
+		resize: none;
+		// resize: vertical;
+		min-height: 106px;
+	}
+
+	&::placeholder {
+		color: var(--clr-dark);
+		opacity: 1;
+		transition: opacity .35s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+
+	}
+
+	&:focus::placeholder{
+		opacity: .4;
+	}
+}
+
+// ------------------------------------------------------------------
+
+.just-validate-error-label{
+	position: absolute;
+	top: 100%;
+	right: 0;
+	z-index: 12;
+
+	font-size: 10px;
+	color: var(--clr-accent) !important;
+	
+}
+
+.just-validate-error-field{
+	border: 1px solid var(--clr-accent--light);
+}
+
+// ------------------------------------------------------------------
+
+
+.form-accepted {
+
+	color: var(--clr-dark);
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	background-color: var(--clr-white);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	transition: opacity 0.35s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+	z-index: 16;
+
+	&.accepted{
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&__accepted-img {
+		display: block;
+		width: 60px;
+		height: 60px;
+		margin-bottom: 24px;
+		background-image: url(../img/modal-callback__accepted-accent.svg);
+		background-position: 0 0;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+
+	&__accepted-text,
+	&__accepted-title{
+		display: block;
+		max-width: 280px;
+	}
+
+	&__accepted-title{
+		font-family: var(--ff-accent);
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 1.25;
+		margin-bottom: 8px;
+	}
+}
+
+// ------------------------------------------------------------------
+
+body {
+	font: 16px/1.65 var(--ff-basis), sans-serif;
+	background-color: var(--clr-white);
+}
+
+//--------------------------------------------------------------------
+
+@import "s-top-nav";
+
+//--------------------------------------------------------------------
+
+@import "s-intro";
+
+//--------------------------------------------------------------------
+
+@import "s-company";
+
+//--------------------------------------------------------------------
+
+@import "s-advantages";
+
+//--------------------------------------------------------------------
+
+@import "s-brands";
+
+//--------------------------------------------------------------------
+
+@import "s-news";
+
+//--------------------------------------------------------------------
+
+@import "s-vacancies";
+
+//--------------------------------------------------------------------
+
+@import "s-catalog-product";
+
+//--------------------------------------------------------------------
+
+@import "s-about-us";
+
+//--------------------------------------------------------------------
+
+@import "s-cooperation";
+
+//--------------------------------------------------------------------
+
+@import "s-contacts";
+
+//--------------------------------------------------------------------
+
+@import "s-footer";
+
+//--------------------------------------------------------------------
+
+@import "mw-company-news";
+
+//--------------------------------------------------------------------
+
+@import "mw-product-order";
+
+//--------------------------------------------------------------------
+
+@import "mw-product-card";
+
+//--------------------------------------------------------------------
+
+@import "mw-callback";
+
+//--------------------------------------------------------------------
+
+
+
+
+

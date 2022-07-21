@@ -1,0 +1,51 @@
+// --------------- секция компания
+
+.company {
+
+	&__container {
+		margin-top: 128px;
+		margin-bottom: 128px;
+	}
+
+	&__wrap {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: relative;
+	}
+
+	&__wrap::after {
+		content: "";
+		background-color: var(--clr-smalt--light);
+		display: block;
+		width: 1px;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 50%;
+	}
+
+	&__logo {
+		flex-basis: 640px;
+		flex-shrink: 2;
+		margin-right: 32px;
+		
+	}
+	&__logo img {
+		display: block;
+		width: auto;
+		height: 100%;
+		margin: 0 auto;
+	}
+
+	&__info {
+		flex-basis: 528px;
+		flex-shrink: 1.5;
+	}
+
+	// &__title {
+	// }
+
+	// &__messange {
+	// }
+}

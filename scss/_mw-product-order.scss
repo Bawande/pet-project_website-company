@@ -1,0 +1,59 @@
+// --------------  модальное окно "Заказать товар"
+
+.modal-product-order {
+	
+	background-color: var(--clr-white);
+	border-radius: 4px;
+	max-width: 816px;
+	padding: 56px 72px 40px;
+	position: relative;
+
+	&__close {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+	}
+
+	&__order {
+		margin-bottom: 8px;
+	}
+
+	&__product-article {
+		margin-bottom: 8px;
+	}
+
+	&__product {
+		margin-bottom: 24px;
+	}
+
+	&__input-wrap {
+		display: grid;
+		gap: 16px;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: auto auto;
+		margin-bottom: 24px;
+	}
+
+	&__name {
+		grid-column: span 2;
+	}
+
+	&__text {
+		grid-column: 2 / span 1;
+		grid-row: 2 / 4;
+	}
+
+	&__text textarea {
+		height: 128px;
+	}
+
+	&__foter-wrap{
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__note {
+		flex-basis: 288px;
+	}
+
+}

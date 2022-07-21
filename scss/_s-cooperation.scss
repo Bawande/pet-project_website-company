@@ -1,0 +1,54 @@
+// --------------  секция сотрудничество
+.cooperation {
+	&__container {
+		padding-top: 128px;
+	}
+	&__content-wrap{
+		display: flex;
+		border-radius: 4px;
+		box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.05);
+		background-color: var(--clr-white);
+		overflow: hidden;
+		
+		
+	}
+	// ------------ призыв
+	&__call {
+		flex-basis: 752px;
+		max-width: 752px;
+		background-image: url(../img/question_background.jpg);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		background-size: cover;
+		color: var(--clr-white);
+		padding: 176px 155px 168px;
+	}
+	
+	&__subtitle {
+		font-size: 30px;
+		margin-bottom: 24px;
+	}
+
+	// --------------- форма
+	&__form {
+		flex-basis: 560px;
+		padding: 64px 104px;
+		position: relative;
+	}
+
+	&__input-wrap {
+		margin-bottom: 24px;
+	}
+
+	&__input:not(:last-child) {
+		margin-bottom: 16px;
+	}
+
+	&__note {
+		margin-bottom: 24px;
+	}
+
+	&__button {
+		width: 100%;
+	}
+}

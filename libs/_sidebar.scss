@@ -1,0 +1,167 @@
+:root{
+	--sb-clr-backgroundToggler: #f6f6f6;
+	--sb-clr-backgroundMenu: #f6f6f6;
+	--sb-clr-lineToggler: #343838;
+
+	// --sb-sizeTogler: 34px;
+	--sb-widthMenu: 300px;
+}
+
+.sb-stop-scroll{
+	overflow: hidden;
+}
+.sb-ovr{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 98;
+	opacity: 0;
+	visibility: hidden;
+	background: rgba(0,0,0,0.65);
+	transition: all .45s ease-in-out;
+}
+
+.sb-ovr.active{
+	opacity: 1;
+	visibility: visible;
+}
+
+
+// кнопка переключатель
+.sb-tg-mn {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+	width: 20px;
+	height: 14px;
+	z-index: 100;
+	transition: all 0.25s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+}
+.sb-tg-mn span{
+	display: inline-block;
+	width: 100%;
+	height: 2px;
+	border-radius: 1px;
+	background-color: var(--sb-clr-lineToggler);
+	transition: all 0.5s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+}
+.sb-tg-mn span:nth-child(2){
+	width: 70%;
+}
+.sb-tg-mn.active span:nth-child(2){
+	transform: scale(0);
+}
+.sb-tg-mn.active span:nth-child(1) {
+	transform: translateY(6px) rotate(-135deg);
+}
+.sb-tg-mn.active span:nth-child(3) {
+	transform: translateY(-6px) rotate(-45deg);
+}
+
+// кнопка открыть
+.sb-opn-mn {
+	border: none;
+	padding: 0;
+	background: transparent;
+	cursor: pointer;
+	text-decoration: none;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+	width: 20px;
+	height: 14px;
+	z-index: 100;
+	transition: all 0.25s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+}
+.sb-opn-mn span{
+	display: inline-block;
+	width: 100%;
+	height: 2px;
+	border-radius: 1px;
+	background-color: var(--sb-clr-lineToggler);
+	transition: all 0.5s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+}
+.sb-opn-mn span:nth-child(2){
+	width: 70%;
+}
+
+// кнопка закрыть
+.sb-cls-mn {
+	border: none;
+	padding: 0;
+	background: transparent;
+	cursor: pointer;
+	text-decoration: none;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+	width: 20px;
+	height: 14px;
+	z-index: 100;
+	transition: all 0.25s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+}
+.sb-cls-mn span{
+	display: inline-block;
+	width: 100%;
+	height: 2px;
+	border-radius: 1px;
+	background-color: var(--sb-clr-lineToggler);
+	transition: all 0.5s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+}
+.sb-cls-mn span:first-child {
+	transform: translateY(6px) rotate(-135deg);
+}
+.sb-cls-mn span:last-child {
+	transform: translateY(-6px) rotate(-45deg);
+}
+
+// стили меню
+.sb-mn {
+	position: fixed;
+	top: 0px;
+	right: calc(var(--sb-widthMenu) * -1);
+	width: var(--sb-widthMenu);
+	height: 100%;
+	background-color: var(--sb-clr-backgroundMenu);
+	overflow: auto;
+	z-index: 99;
+	opacity: 0;
+	transition: all 0.45s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+}
+
+.sb-mn.active {
+	right: 0px;
+	opacity: 1;
+}
+
+.sb-mn__ls *{
+	// transition: all 0.25s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+}
+
+// @media screen and (min-width: 992px) {
+
+// 	.sb-tg-mn{
+// 		display: none;
+// 	}
+// 	.sb-mn{
+// 		position: static;
+// 		opacity: 1;
+// 		width: auto;
+// 		height: auto;
+// 		top: auto;
+// 		right: auto;
+// 	}
+// 	.sb-mn__ls{
+// 		position: static;
+// 		top: auto;
+// 		display: flex;
+// 		transform: none;
+// 	}
+//   }

@@ -1,0 +1,103 @@
+// Часто используемые стили 
+
+//container
+.container {
+	margin: 0 auto;
+	padding: 0 var(--container-offset);
+	max-width: calc(var(--container-width) + (var(--container-offset) * 2));
+}
+
+.container__external-block{
+	display: flex;
+}
+.container__external-block-right{
+	margin-left: unquote('max(var(--container-offset), calc((100% - var(--container-width)) / 2) + var(--container-offset))');
+	justify-content: start;
+}
+.container__external-block-left{
+	margin-right: unquote('max(var(--container-offset), calc((100% - var(--container-width)) / 2) + var(--container-offset))');
+	justify-content: end;
+}
+
+// flex
+.flex{
+	display: flex;
+
+	&-jc-sb{
+		justify-content: space-between;
+	}
+	&-jc-c{
+		justify-content: center;
+	}
+	&-ai-c{
+		align-items: center;
+	}
+	&-ai-fe{
+		align-items:flex-end;
+	}
+	&-wrap{
+		flex-wrap: wrap;
+	}
+}
+
+// resets
+.btn-reset {
+	border: none;
+	padding: 0;
+	background: transparent;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.list-reset {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.input-reset {
+	-webkit-appearance: none;
+	appearance: none;
+	border: none;
+	border-radius: 0;
+	background-color: #fff;
+  
+	&::-webkit-search-decoration,
+	&::-webkit-search-cancel-button,
+	&::-webkit-search-results-button,
+	&::-webkit-search-results-decoration {
+	  display: none;
+	}
+}
+
+// text
+.text-center{
+	text-align: center;
+}
+
+.user-select-none{
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+// images
+.img-object-fit{
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center center;
+}
+
+// скрытие SEO элементов
+.visually-hidden {
+	position: absolute;
+	overflow: hidden;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	width: 1px;
+	height: 1px;
+	clip: rect(0 0 0 0);
+}

@@ -21,10 +21,10 @@
 
 	&__logo {
 		flex-basis: 415px;
-		overflow: hidden;
+		height: 248px;
 		margin-right: 15px;
-
 	}
+
 	&__logo img {
 		display: block;
 		width: 100%;
@@ -35,22 +35,95 @@
 
 	&__description {
 		flex-basis: 515px;
+		margin-left: 80px;
 	}
+
+	@media screen and (max-width: 1024px){
+
+		&__content-wrapper {
+			padding: 64px 88px;
+		}
+	
+	}
+
+	@media screen and (max-width: 768px){
+
+		&__content-wrapper {
+			display: block;
+			padding: 64px 64px;
+		}
+
+		&__logo {
+			flex-basis: auto;
+			width: 100%;
+			height: 248px;
+			max-width: 296px;
+			margin-right: 0;
+			margin-bottom: 48px;
+		}
+
+		&__description {
+			flex-basis: auto;
+			margin-left: 0;
+		}
+	
+	}
+
+	@media screen and (max-width: 480px){
+		
+		&__header {
+			margin-bottom: 40px;
+		}
+
+		&__content-wrapper {
+			padding: 40px 24px;
+		}
+	
+	}
+
+	@media screen and (max-width: 320px){
+
+		&__header {
+			margin-bottom: 24px;
+		}
+
+		&__content-wrapper {
+			padding: 32px 16px;
+		}
+
+		&__logo {
+			height: 186px;
+		}
+	
+	}
+
 }
 
 // ---------------------- swiper сеции бренд --------------------------
-.br-sp{
-	width: 100%;
-	height: 376px;
-	background-color: var(--clr-white);
-	border-radius: 4px;
-	box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.05);
-}
+.brands-swiper {
+	padding: 10px;
+	
+	&__slide{
+		width: 100%;
+		background-color: var(--clr-white);
+		border-radius: 4px;
+		box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+	}
 
-.br-sp-btn-wrapper{
-	width: 92px;
-	height: 40px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	&__btn-wrap {
+		width: 92px;
+		height: 40px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	@media screen and (max-width: 650px){
+		
+		&__btn-wrap {
+			display: none;
+		}
+	
+	}
+
 }

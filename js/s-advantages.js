@@ -25,7 +25,7 @@ let advanSwiper = new Swiper(advantagesSwiper, {
 		renderCustom: function (sp, cr, tt) {
 			let indT = tt >= 10 ? cr : `0${tt}`
 			let indC = cr >= 10 ? cr : `0${cr}`
-			return `<span>${indC}</span><span">/${indT}</spanss=>`
+			return `<span>${indC}</span><span>/${indT}</span>`
 		}
 	},
 

@@ -208,10 +208,6 @@
 
 				<div class="company__wrap">
 
-					<div class="company__logo">
-						<img src="./img/s_company/logo-Proteco.svg" alt="логотип группы компаний Протеко">
-					</div>
-
 					<div class="company__info">
 
 						<h2 class="company__title title title--h2">
@@ -225,6 +221,19 @@
 						</p>
 
 					</div>
+
+					<div class="company__logo">
+						<span>Входит в</span>
+						<picture>
+							<source media="(max-width: 768px)" srcset="
+							./img/s_company/logo-Proteco_horizontal.svg 768w,
+								" />
+							<img src="./img/s_company/logo-Proteco_vertical.svg" alt="bears" />
+						</picture>
+
+					</div>
+
+
 
 				</div>
 
@@ -341,23 +350,27 @@
 							</div>
 						</div>
 					</div>
-					<!-- If we need pagination -->
-					<!-- <div class="swiper-pagination"></div> -->
 
-					<!-- If we need scrollbar -->
-					<!-- <div class="swiper-scrollbar"></div> -->
 				</div>
 
-				<!-- If we need navigation buttons -->
 				<div class="advantages__btn-wrapper">
 					<!-- If we need navigation buttons -->
 					<div class="swiper-button-prev advantages__btn-prv"></div>
 
-					<div>
-						<div class="swiper-scrollbar advantages__scrollbar"></div>
-						<div class="swiper-pagination advantages__pagination"></div>
+					<div class="advantages__nav-bar small-nav-bar">
+
+						<!-- If we need scrollbar -->
+						<div class="advantages__scroll-wrap small-nav-bar__scroll-wrap">
+							<div class="swiper-scrollbar advantages__scrollbar small-nav-bar__scroll-bar">
+							</div>
+						</div>
+						<!-- If we need pagination -->
+						<div class="swiper-pagination advantages__pagination small-nav-bar__pagination">
+						</div>
+
 					</div>
 
+					<!-- If we need navigation buttons -->
 					<div class="swiper-button-next advantages__btn-nxt"></div>
 
 				</div>
@@ -374,19 +387,19 @@
 
 					<h2 class="title title--h2">Продукция под брендами</h2>
 
-					<div class="br-sp-btn-wrapper">
+					<div class="brands-swiper__btn-wrap">
 						<!-- If we need navigation buttons -->
-						<div class="swiper-button-prev br-sp-btn-prv"></div>
-						<div class="swiper-button-next br-sp-btn-nxt"></div>
+						<div class="swiper-button-prev brands-swiper__btn-prv"></div>
+						<div class="swiper-button-next brands-swiper__btn-nxt"></div>
 					</div>
 				</header>
 
 				<!-- Slider main container -->
-				<div class="swiper br-sp">
+				<div class="swiper brands-swiper">
 					<!-- Additional required wrapper -->
-					<div class="swiper-wrapper br-sp-wrp">
+					<div class="swiper-wrapper brands-swiper__wrap">
 						<!-- Slides -->
-						<div class="swiper-slide br-sp-sld">
+						<div class="swiper-slide brands-swiper__slide">
 
 							<div class="brands__content-wrapper">
 								<div class="brands__logo">
@@ -402,7 +415,7 @@
 							</div>
 						</div>
 						<!-- Slides -->
-						<div class="swiper-slide br-sp-sld">
+						<div class="swiper-slide brands-swiper__slide">
 
 							<div class="brands__content-wrapper">
 								<div class="brands__logo">
@@ -418,7 +431,7 @@
 							</div>
 						</div>
 						<!-- Slides -->
-						<div class="swiper-slide br-sp-sld">
+						<div class="swiper-slide brands-swiper__slide">
 
 							<div class="brands__content-wrapper">
 								<div class="brands__logo">

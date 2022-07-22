@@ -19,7 +19,54 @@
 	background-color: var(--clr-accent);
 }
 
+.small-nav-bar {
 
+	width: 154px;
+	height: 31px;
+	position: relative;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+
+
+	&__scroll-wrap{
+		width: 124px;
+		height: 5px;
+	}
+
+	&__scroll-bar {
+		height: 2px;
+		background-color: var(--clr-accent);	
+		z-index: 15;
+	}
+
+	&__pagination {
+		text-align: right;
+		width: 154px;
+		display: flex;
+		justify-content: space-between;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+
+	&__pagination span {
+		display: inline-block;
+		font-family: var(--ff-basis);
+		font-style: normal;
+		font-weight: 600;
+		color: var(--clr-dark);
+		line-height: 1;
+	}
+
+	&__pagination span:first-child {
+		font-size: 24px;
+	}
+
+	&__pagination span:last-child{
+		font-size: 12px;
+	}
+}
 
 
 

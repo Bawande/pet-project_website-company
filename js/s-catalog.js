@@ -2,6 +2,7 @@
 // карточки товара 
 const cardsCatalog = document.querySelectorAll("[data-product-card-article]");
 
+// console.log(cardsCatalog)
 // каталог - фильтры
 
 // каталог - открытие подробной карточки товара
@@ -137,3 +138,83 @@ function showCards(count) {
 		i++;
 	})
 };
+
+
+
+// отслеживания событий вьюпорта
+// вызывает функцию переопределения стиля селектора 
+window.addEventListener('resize', (event) => {
+	overridesStyleSelector();
+});
+
+// функция переопределяет стили элементов блока селекторов
+// в зависимости от размера вьюпорта
+function overridesStyleSelector() {
+
+	const widthWind = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+	const filterList = document.querySelectorAll('.filter__list')
+	const filterItem = document.querySelectorAll('.filter__item')
+	const brnsSelected = document.querySelectorAll('[data-btn-droplist]');
+
+	if (widthWind <= 480) {
+		// селекторы
+		filterItem.forEach((el) => {
+			el.classList.remove('teg');
+			el.classList.add('teg-droplist');
+		});
+		// обертка селекторов
+		filterList.forEach((el) => {
+			el.classList.add('hidden');
+		});
+		// кнопка выбора
+		brnsSelected.forEach((el) => {
+			el.classList.remove('hidden');
+		});
+
+
+	} else {
+		// селекторы
+		filterItem.forEach((el) => {
+			el.classList.remove('teg-droplist');
+			el.classList.add('teg');
+		});
+		// обертка селекторов
+		filterList.forEach((el) => {
+			el.classList.remove('hidden');
+		});
+		// кнопка выбора
+		brnsSelected.forEach((el) => {
+			el.classList.add('hidden');
+		});
+
+	}
+}
+// вызов функции
+overridesStyleSelector();
+
+// работа с селекторами (тегами) фильтра
+// определения активного селектора
+const filtersList = document.querySelectorAll('[data-filter]');
+
+filtersList.forEach(filterWrap => {
+
+	const brnSelected = filterWrap.querySelector('[data-btn-droplist]');
+	const listSelector = filterWrap.querySelectorAll('input[type=radio]')
+	const checkedSelector = filterWrap.querySelector('input[checked] ~ label').innerText;
+
+	// console.log(brnSelected);
+	// console.log(checkedSelector);
+	// console.log(listSelector);
+
+	brnSelected.innerHTML = checkedSelector;
+
+	listSelector.forEach(e => {
+
+		e.addEventListener('click', event => {
+			const selectorValue = event.target.closest('.filter__item').innerText;
+			brnSelected.innerHTML = selectorValue;
+			// console.log(event.target.closest('.filter__item'))
+		})
+	})
+
+})

@@ -169,27 +169,7 @@ cooperationValidation
 
 
 
-// обработка событий секции новости 
-// открытие модального окна новости
-const companyNews = document.querySelector('.news__container');
 
-companyNews.addEventListener('click', (event) => {
-	// console.log(event.target.classList.contains('card-news'));
-	// console.log(event.target.className);
-	// if (event.target.classList.contains('card-news')) {
-	// if (event.target.dataset.news) {
-	if (event.target.closest('.card-news')) {
-		event.stopPropagation();
-		// запускаем модальное новости
-		MicroModal.show('id-modal-company-news', {
-			openTrigger: 'data-custom-open',
-			closeTrigger: 'data-custom-close',
-			openClass: 'is-open',
-			disableScroll: true,
-			disableFocus: true,
-		});
-	}
-})
 
 
 

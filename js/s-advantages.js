@@ -33,25 +33,25 @@ let advanSwiper = new Swiper(advantagesSwiper, {
 		// when window width is >= 320px
 		321: {
 			slidesPerView: 1,
-			spaceBetween: 0,
+			spaceBetween: 16,
 
 			grid: {
 				rows: 1,
 			}
 		},
 		// when window width is >= 576px
-		577: {
+		576: {
 			slidesPerView: 2,
-			spaceBetween: 0,
+			// spaceBetween: 0,
 
 			grid: {
 				rows: 3,
 			}
 		},
 		// when window width is >= 1024px
-		1025: {
+		1110: {
 			slidesPerView: 3,
-			spaceBetween: 0,
+			// spaceBetween: 32,
 
 			grid: {
 				rows: 2,

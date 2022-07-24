@@ -2259,8 +2259,50 @@ body {
   list-style-type: none;
 }
 
+.filter__list.mobile {
+  background-color: var(--clr-white);
+  -webkit-box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.05);
+          box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  max-height: 95vh;
+  overflow: auto;
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 100;
+}
+
+.filter__list.hidden {
+  display: none;
+}
+
 .filter__btn-droplist {
   display: block;
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--clr-haze);
+  border-radius: 4px;
+  text-align: left;
+  position: relative;
+}
+
+.filter__btn-droplist::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: url("../img/s_catalog/ico-arrow.svg") center center no-repeat;
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.filter__btn-droplist.hidden {
+  display: none;
 }
 
 .filter__list .filter__list--indent {
@@ -2390,7 +2432,7 @@ body {
 
 .teg-droplist {
   position: relative;
-  padding: 16px 8px 16px 30px;
+  padding: 16px 8px 16px 38px;
 }
 
 .teg-droplist:not(:last-child) {
@@ -2418,7 +2460,7 @@ body {
   position: absolute;
   border-radius: 50%;
   top: 50%;
-  left: 0;
+  left: 8px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   width: 16px;
@@ -2437,7 +2479,7 @@ body {
   height: 6px;
   border-radius: 50%;
   top: 50%;
-  left: 5px;
+  left: 13px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   opacity: 0;

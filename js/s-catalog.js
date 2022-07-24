@@ -68,7 +68,7 @@ productOrderBtn.addEventListener('click', function () {
 	});
 
 
-	console.log(articleCard.getAttribute('data-product-modal-article'));
+	// console.log(articleCard.getAttribute('data-product-modal-article'));
 
 
 });
@@ -110,7 +110,7 @@ loadMoreButton.addEventListener('click', function () {
 		if (!card.length) {
 			loadMoreButton.classList.add('hidden')
 		};
-		console.log(i);
+		// console.log(i);
 
 	}, 200);
 });
@@ -164,6 +164,7 @@ function overridesStyleSelector() {
 		});
 		// обертка селекторов
 		filterList.forEach((el) => {
+			el.classList.add('mobile');
 			el.classList.add('hidden');
 		});
 		// кнопка выбора
@@ -180,6 +181,8 @@ function overridesStyleSelector() {
 		});
 		// обертка селекторов
 		filterList.forEach((el) => {
+			// console.log(el)
+			el.classList.remove('mobile');
 			el.classList.remove('hidden');
 		});
 		// кнопка выбора
@@ -192,15 +195,18 @@ function overridesStyleSelector() {
 // вызов функции
 overridesStyleSelector();
 
-// работа с селекторами (тегами) фильтра
-// определения активного селектора
+// работа с селекторами (тегами) фильтра на мобильных телефонах
 const filtersList = document.querySelectorAll('[data-filter]');
 
-filtersList.forEach(filterWrap => {
+filtersList.forEach((filterWrap) => {
 
 	const brnSelected = filterWrap.querySelector('[data-btn-droplist]');
 	const listSelector = filterWrap.querySelectorAll('input[type=radio]')
 	const checkedSelector = filterWrap.querySelector('input[checked] ~ label').innerText;
+	const filterList = filterWrap.querySelector('.filter__list')
+
+	const pageWrapper = document.querySelector('[data-menu-overlay]');
+	const body = document.body;
 
 	// console.log(brnSelected);
 	// console.log(checkedSelector);
@@ -208,13 +214,48 @@ filtersList.forEach(filterWrap => {
 
 	brnSelected.innerHTML = checkedSelector;
 
-	listSelector.forEach(e => {
+	// логика выбора активного селектора
+	// логика закрытия по выбору/нажатию селектора
+	listSelector.forEach((e) => {
 
 		e.addEventListener('click', event => {
 			const selectorValue = event.target.closest('.filter__item').innerText;
 			brnSelected.innerHTML = selectorValue;
-			// console.log(event.target.closest('.filter__item'))
+
+			if (pageWrapper?.classList.contains('active')) {
+
+				filterList?.classList.add('hidden');
+
+				setTimeout(() => {
+					body?.classList.remove('sb-stop-scroll');
+					pageWrapper?.classList.remove('active');
+				}, 10)
+			}
 		})
+
 	})
 
+	// логика открытия меню фильтров
+	brnSelected.addEventListener('click', () => {
+
+		filterList.classList.remove('hidden');
+		body?.classList.add('sb-stop-scroll');
+		pageWrapper?.classList.add('active');
+	})
+
+	// логика закрытия по нажатию клавиши
+	window.addEventListener('keydown', function (event) {
+
+		if (pageWrapper?.classList.contains('active') && event.key === "Escape") {
+
+			filterList?.classList.add('hidden');
+
+			setTimeout(() => {
+				body?.classList.remove('sb-stop-scroll');
+				pageWrapper?.classList.remove('active');
+			}, 10)
+		}
+	});
+
 })
+

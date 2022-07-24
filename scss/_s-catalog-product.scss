@@ -94,19 +94,62 @@
 		margin-bottom: 16px;
 	}
 
-	&__list{
+	&__list {
 		display: inline-block;
 		list-style-type: none;
 	}
 
-	&__btn-droplist{
+	&__list.mobile {
+		background-color: var(--clr-white);
+		box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.05);
+		border-radius: 4px;
+		max-height: 95vh;
+		overflow: auto;
+
+		position: fixed;
+		left: 16px;
+		right: 16px;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 100;
+		
+	}
+
+	&__list.hidden {
+		display: none;
+	}
+
+
+
+	&__btn-droplist {
 		display: block;
+		width: 100%;
+		padding: 16px 24px;
+		background: var(--clr-haze);
+		border-radius: 4px;
+		text-align: left;
+		position: relative;
+	}
+
+	&__btn-droplist::after {
+		content: "";
+		width: 24px;
+		height: 24px;
+		background: url('../img/s_catalog/ico-arrow.svg') center center no-repeat;
+
+		position: absolute;
+		top: 50%;
+		right: 24px;
+
+		transform: translateY(-50%);
+		
+
+	}	
+
+	&__btn-droplist.hidden{
+		display: none;
 	}
 	
-	// &__item{
-	// 	margin-top: 8px;
-	// 	margin-right: 8px;
-	// }
 
 	&__list &__list--indent{
 		margin-bottom: 60px;
@@ -226,7 +269,7 @@
 .teg-droplist{
 
 	position: relative;
-	padding: 16px 8px 16px 30px;
+	padding: 16px 8px 16px 38px;
 
 	&:not(:last-child){
 		border-bottom: 2px solid var(--clr-haze);
@@ -237,7 +280,6 @@
 		position: absolute;
 		z-index: -1;
 		opacity: 0;
-		// margin: 10px 0 0 7px;
 	}
 
 	& label {
@@ -255,7 +297,7 @@
 		position: absolute;
 		border-radius: 50%;
 		top: 50%;
-		left: 0;
+		left: 8px;
 		transform: translateY(-50%);
 		width: 16px;
 		height: 16px;
@@ -272,7 +314,7 @@
 		height: 6px;
 		border-radius: 50%;
 		top: 50%;
-		left: 5px;
+		left: 13px;
 		transform: translateY(-50%);
 		
 		opacity: 0;

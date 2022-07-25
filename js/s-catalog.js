@@ -1,18 +1,46 @@
+import pruductDBJSON from "./_catalog_objects.mjs"
+import loadInitialCards from "./_catalog_load-cards.mjs"
+import loadInitialFilters from "./_catalog_load-filter.mjs"
+
+localStorage.setItem("product", JSON.stringify(pruductDBJSON));
+
+
+window.addEventListener('DOMContentLoaded', () => {
+
+	// инициализация фильтров
+	loadInitialFilters('#filtersWrapType', 'appointment');
+	loadInitialFilters('#filtersWrapAppointment', 'type');
+
+	// инициализация карточек каталога товара
+	loadInitialCards();
+	// слушатель на кнопку загрузить еще
+	const loadMoreButton = document.querySelector("[data-load-more-button]");
+	loadMoreButton.addEventListener('click', () => {
+		loadInitialItems(true);
+	})
+
+	// END DOMContentLoaded
+})
+
+
+
+
+
 // каталог
 // карточки товара 
-const cardsCatalog = document.querySelectorAll("[data-product-card-article]");
 
 // console.log(cardsCatalog)
 // каталог - фильтры
-
+/*
+const cardsCatalog = document.querySelectorAll("[data-product-card-article]");
 // каталог - открытие подробной карточки товара
-
+	
 cardsCatalog.forEach(el => {
-
+	
 	el.addEventListener('click', () => {
-
+	
 		// console.log(el.setAttribute("data-product-card-article"));
-
+	
 		// передаем артикл
 		const articleCard = document.querySelector('#product-modal-article');
 		if (articleCard) {
@@ -33,14 +61,14 @@ cardsCatalog.forEach(el => {
 		});
 	})
 });
-
+	
 // каталог - открытие формы заказа товара
-
+	
 // кнопка заказа товара
 const productOrderBtn = document.querySelector('[data-product-order-btn]');
-
+	
 productOrderBtn.addEventListener('click', function () {
-
+	
 	// получим значения артикля в карточке товара
 	const articleCard = document.querySelector("#product-modal-article");
 	// закроем модальное окно карточки товара
@@ -66,38 +94,38 @@ productOrderBtn.addEventListener('click', function () {
 		disableScroll: true,
 		disableFocus: true,
 	});
-
-
+	
+	
 	// console.log(articleCard.getAttribute('data-product-modal-article'));
-
-
+	
+	
 });
-
-
+	
+	
 // каталог - загрузить еще
-const loadMoreButton = document.querySelector("[data-product-card-btn]");
+	
 // колличество элементов массива cardsCatalog
 const countCardsCatalog = Object.keys(cardsCatalog).length;
 // console.log("Всего элементов в массиве =", countElementsCard);
-
+	
 // сколько показывать при загрузке
 const startViewCard = 12;
 // сколько добавить при нажатии кнопки
 const moreViewCard = 3;
-
+	
 // скроем все карточки
 hideCards(countCardsCatalog);
 // покажем стартовые карточки startViewCard
 showCards(startViewCard);
-
-
+	
+	
 loadMoreButton.addEventListener('click', function () {
-
+	
 	// найдем все скрытые карточки
 	const hiddenCard = document.querySelectorAll(".hidden");
-
+	
 	setTimeout(() => {
-
+	
 		let i = 0;
 		hiddenCard.forEach(el => {
 			if (i < moreViewCard) {
@@ -105,40 +133,40 @@ loadMoreButton.addEventListener('click', function () {
 			}
 			i++;
 		})
-
+	
 		let card = document.querySelectorAll(".hidden");
 		if (!card.length) {
 			loadMoreButton.classList.add('hidden')
 		};
 		// console.log(i);
-
+	
 	}, 200);
 });
-
+	
 // функция скрытия карточки
 function hideCards(count) {
 	let i = 0;
 	cardsCatalog.forEach(el => {
-
+	
 		if (i < count) {
 			el.classList.add('hidden')
 		}
 		i++;
 	})
 };
-
+	
 // функция показа карточки
 function showCards(count) {
 	let i = 0;
 	cardsCatalog.forEach(el => {
-
+	
 		if (i < count) {
 			el.classList.remove('hidden')
 		}
 		i++;
 	})
 };
-
+*/
 
 
 // отслеживания событий вьюпорта

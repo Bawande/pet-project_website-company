@@ -26,6 +26,7 @@ function loadInitialFilters(containerSelector, filter) {
 	})
 	// вывожу в браузер
 	filtersWrapper.innerHTML = out;
+	filtersWrapper.dataset.filterList = filter;
 	// console.log(filtersWrapper)
 }
 

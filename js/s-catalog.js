@@ -7,21 +7,116 @@ localStorage.setItem("product", JSON.stringify(pruductDBJSON));
 
 window.addEventListener('DOMContentLoaded', () => {
 
-	// инициализация фильтров
-	loadInitialFilters('#filtersWrapType', 'appointment');
-	loadInitialFilters('#filtersWrapAppointment', 'type');
+	// инициализация и вывод фильтров
+	loadInitialFilters('#filtersWrapType', 'type');
+	loadInitialFilters('#filtersWrapAppointment', 'appointment');
+
+	// применение классов стилей для фильтров в зависимости от разрешения окна
+	overridesStyleSelector();
+
+	// обработчик состояний селектора
+	handlerStatusSelector();
 
 	// инициализация карточек каталога товара
-	loadInitialCards();
-	// слушатель на кнопку загрузить еще
 	const loadMoreButton = document.querySelector("[data-load-more-button]");
+	const cards = JSON.parse(localStorage.getItem("product"));
+
+	// инициализация и вывод карточек товара
+	// const filterCards = filteringArray(cards);
+	// console.log(filterCards)
+
+	loadInitialCards(filteringArray(cards));
+
+	// слушатель на кнопку загрузить еще
 	loadMoreButton.addEventListener('click', () => {
-		loadInitialItems(true);
+		loadInitialCards(filteringArray(cards), true);
 	})
+
+	/**
+	* отследить событе нажатие селектора тега фильтра
+	* получить текущее состояние фильтров
+	* отсортировать массив карточек
+	* вывести массив
+	*/
+
+	const filtersList = document.querySelectorAll('[data-filter]');
+
+	filtersList.forEach((el) => {
+
+		el.addEventListener('click', event => {
+
+			if (event.target.closest('.filter__item input[type=radio]')) {
+
+				loadInitialCards(filteringArray(cards));
+			}
+
+		})
+
+	})
+
 
 	// END DOMContentLoaded
 })
 
+
+function filteringArray(arr) {
+
+	const filter = arr.filter(el => {
+		const activeFilters = getValueActiveFilter();
+		let result = true;
+
+		activeFilters.forEach(object => {
+			for (const key in object) {
+				const element = object[key];
+				if (el[key].indexOf(element) === -1) {
+					result = false;
+					break
+				}
+			}
+		})
+		return result
+	})
+
+	return filter;
+}
+
+/**
+ * получить значение секции тега фильтров
+ * получить состояние активного фильтра
+ * 
+ * @returns массив объектов key: имя секции фильтра value: состояний селекторов фильтра
+ */
+function getValueActiveFilter() {
+	const filtersList = document.querySelectorAll('[data-filter]');
+	const arrayResult = [];
+
+	filtersList.forEach((el) => {
+		const brnSelected = el.querySelector('[data-btn-droplist]')?.innerText;
+		const filterList = el.querySelector('[data-filter-list]')?.dataset.filterList;
+		arrayResult.push({ [filterList]: brnSelected })
+	})
+	// console.log(arrayResult)
+	return arrayResult;
+}
+
+/**
+ * 
+ * @param {*} filter 
+ * @param {*} key 
+ * @param {*} array 
+ * @returns 
+ */
+function filteringArrayCards(filter, key, array) {
+
+	const resultArray = array.filter((el) => {
+
+		if (Array.isArray(el[key])) {
+			return el[key].indexOf(filter) !== -1 ? true : false;
+		}
+	})
+
+	return resultArray;
+}
 
 
 
@@ -221,36 +316,62 @@ function overridesStyleSelector() {
 	}
 }
 // вызов функции
-overridesStyleSelector();
+
 
 // работа с селекторами (тегами) фильтра на мобильных телефонах
-const filtersList = document.querySelectorAll('[data-filter]');
+function handlerStatusSelector() {
 
-filtersList.forEach((filterWrap) => {
+	const filtersList = document.querySelectorAll('[data-filter]');
 
-	const brnSelected = filterWrap.querySelector('[data-btn-droplist]');
-	const listSelector = filterWrap.querySelectorAll('input[type=radio]')
-	const checkedSelector = filterWrap.querySelector('input[checked] ~ label').innerText;
-	const filterList = filterWrap.querySelector('.filter__list')
+	filtersList.forEach((filterWrap) => {
 
-	const pageWrapper = document.querySelector('[data-menu-overlay]');
-	const body = document.body;
+		const brnSelected = filterWrap.querySelector('[data-btn-droplist]');
+		const listSelector = filterWrap.querySelectorAll('input[type=radio]')
+		const checkedSelector = filterWrap.querySelector('input[checked] ~ label')?.innerText;
+		const filterList = filterWrap.querySelector('.filter__list')
 
-	// console.log(brnSelected);
-	// console.log(checkedSelector);
-	// console.log(listSelector);
+		const pageWrapper = document.querySelector('[data-menu-overlay]');
+		const body = document.body;
 
-	brnSelected.innerHTML = checkedSelector;
+		brnSelected.innerHTML = checkedSelector;
 
-	// логика выбора активного селектора
-	// логика закрытия по выбору/нажатию селектора
-	listSelector.forEach((e) => {
+		// console.log(brnSelected);
+		// console.log(checkedSelector);
+		// console.log(listSelector);
 
-		e.addEventListener('click', event => {
-			const selectorValue = event.target.closest('.filter__item').innerText;
-			brnSelected.innerHTML = selectorValue;
+		// логика выбора активного селектора
+		// логика закрытия по выбору/нажатию селектора
+		listSelector?.forEach((e) => {
 
-			if (pageWrapper?.classList.contains('active')) {
+			e.addEventListener('click', event => {
+				const selectorValue = event.target.closest('.filter__item')?.innerText;
+				brnSelected.innerHTML = selectorValue;
+				// console.log(selectorValue)
+				if (pageWrapper?.classList.contains('active')) {
+
+					filterList?.classList.add('hidden');
+
+					setTimeout(() => {
+						body?.classList.remove('sb-stop-scroll');
+						pageWrapper?.classList.remove('active');
+					}, 10)
+				}
+			})
+
+		})
+
+		// логика открытия меню фильтров
+		brnSelected?.addEventListener('click', () => {
+
+			filterList.classList.remove('hidden');
+			body?.classList.add('sb-stop-scroll');
+			pageWrapper?.classList.add('active');
+		})
+
+		// логика закрытия по нажатию клавиши
+		window.addEventListener('keydown', function (event) {
+
+			if (pageWrapper?.classList.contains('active') && event.key === "Escape") {
 
 				filterList?.classList.add('hidden');
 
@@ -259,31 +380,7 @@ filtersList.forEach((filterWrap) => {
 					pageWrapper?.classList.remove('active');
 				}, 10)
 			}
-		})
+		});
 
 	})
-
-	// логика открытия меню фильтров
-	brnSelected.addEventListener('click', () => {
-
-		filterList.classList.remove('hidden');
-		body?.classList.add('sb-stop-scroll');
-		pageWrapper?.classList.add('active');
-	})
-
-	// логика закрытия по нажатию клавиши
-	window.addEventListener('keydown', function (event) {
-
-		if (pageWrapper?.classList.contains('active') && event.key === "Escape") {
-
-			filterList?.classList.add('hidden');
-
-			setTimeout(() => {
-				body?.classList.remove('sb-stop-scroll');
-				pageWrapper?.classList.remove('active');
-			}, 10)
-		}
-	});
-
-})
-
+}

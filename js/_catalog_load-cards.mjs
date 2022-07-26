@@ -1,31 +1,36 @@
 
 export default loadInitialCards;
 
-const cardsWrapper = document.querySelector(".catalog-product__cards-list");
 const loadMoreButton = document.querySelector("[data-load-more-button]");
 
 let initialItems = 6;
 let loadItems = 3;
 
 
-function loadInitialCards(loadMore = false) {
+function loadInitialCards(arrCards = [], loadMore = false) {
 
-	const cards = JSON.parse(localStorage.getItem("product"));
-	const currentDisplayedItems = document.querySelectorAll('[data-product-card-article]').length;
-	const current = Math.max(initialItems, currentDisplayedItems) + ((loadMore) ? loadItems : 0);
-	let out = '';
+	console.log(arrCards)
+	// const cards = JSON.parse(localStorage.getItem("product"));
+	const cardsWrapper = document.querySelector(".catalog-product__cards-list");
+	let currentInitial = initialItems;
+	let currentDisplayedItems = 0;
 	let counter = 0;
-	// console.log(current);
-	// console.log(document.querySelectorAll('[data-product-card-article]'));
 
-	if (currentDisplayedItems) {
-		out = cardsWrapper.innerHTML;
+	let out = '';
+
+	if (loadMore) {
+
+		currentDisplayedItems = document.querySelectorAll('[data-product-card-article]').length;
+		currentInitial = Math.max(initialItems, currentDisplayedItems) + loadItems;
+		if (currentDisplayedItems) {
+			out = cardsWrapper?.innerHTML;
+		}
 	}
 
-	for (let card of cards) {
+	for (let card of arrCards) {
 		if (
-			counter >= currentDisplayedItems &&
-			counter < current
+			counter >= currentDisplayedItems
+			&& counter < currentInitial
 		) {
 			out += `
 				<!-- card -->
@@ -60,8 +65,11 @@ function loadInitialCards(loadMore = false) {
 
 	const container = document.createElement('div');
 	cardsWrapper.after(container, loadMoreButton);
+	loadMoreButton.style.display = "block";
 
-	if (current >= cards.length) {
+	console.log(currentInitial, ' ', arrCards.length)
+
+	if (currentInitial >= arrCards.length) {
 		loadMoreButton.style.display = "none";
 	}
 

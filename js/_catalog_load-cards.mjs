@@ -9,7 +9,7 @@ let loadItems = 3;
 
 function loadInitialCards(arrCards = [], loadMore = false) {
 
-	console.log(arrCards)
+	// console.log(arrCards)
 	// const cards = JSON.parse(localStorage.getItem("product"));
 	const cardsWrapper = document.querySelector(".catalog-product__cards-list");
 	let currentInitial = initialItems;
@@ -67,7 +67,7 @@ function loadInitialCards(arrCards = [], loadMore = false) {
 	cardsWrapper.after(container, loadMoreButton);
 	loadMoreButton.style.display = "block";
 
-	console.log(currentInitial, ' ', arrCards.length)
+	// console.log(currentInitial, ' ', arrCards.length)
 
 	if (currentInitial >= arrCards.length) {
 		loadMoreButton.style.display = "none";
@@ -87,8 +87,8 @@ function fadeLoadCards() {
 			let opacity = 0;
 
 			const interval = setInterval(function () {
-				if (opacity <= 1) {
-					opacity = opacity + 0.2;
+				if (opacity < 0.9) {
+					opacity = opacity + 0.1;
 					el.style.opacity = opacity;
 				} else {
 					clearInterval(interval);

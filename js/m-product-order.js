@@ -55,43 +55,91 @@ modalProductCardValidation
 	.onSuccess((event) => {
 		// console.log('Validation passes and form submitted', event);
 
-		let formData = new FormData(event.target);
+		const formData = new FormData(event.target);
+		const acceptedForm = document.querySelector('.modal-product-order__accepted');
 
-		console.log(...formData);
+		let out = `
+			<div class="form-accepted__accepted-img"></div>
 
-		// let xhr = new XMLHttpRequest();
+			<div class="form-accepted__accepted-title"> 
+				Ожидайте!
+			</div>
+			<p class="form-accepted__accepted-text text text__basis"> 
+				Ваша заявка обрабатывается.
+			</p>
+		`;
+		acceptedForm.innerHTML = out;
 
-		// xhr.onreadystatechange = function () {
-		// 	if (xhr.readyState === 4) {
-		// 		if (xhr.status === 200) {
-		// 			console.log('Отправлено');
-		// 		}
-		// 	}
-		// }
+		// добавляю класс формы отправленно 
+		// вывожу сообщение об отправке
+		acceptedForm?.classList.remove('hidden');
+		acceptedForm?.classList.add('load');
 
-		// xhr.open('POST', 'mail.php', true);
-		// xhr.send(formData);
+		setData('https://jsonplaceholder.typicode.com/posts', formData)
+			.then(() => {
 
-		// добавляю класс формы отправленно / вывожу сообщение об отправке
-		let acceptedForm = document.querySelector('.modal-product-order__accepted');
-		acceptedForm?.classList.add('accepted');
+				acceptedForm?.classList.remove('load');
+				acceptedForm?.classList.add('accepted');
 
-		// сбрасываю значения формы
-		event.target.reset();
+				out = `
+					<div class="form-accepted__accepted-img"></div>
 
-		// пауза
-		// удаляю значения стиля отпралено
-		// закрываем форму
-		setTimeout(() => {
+					<div class="form-accepted__accepted-title"> 
+						Спасибо!
+					</div>
+					<p class="form-accepted__accepted-text text text__basis"> 
+						Ваша заявка принята. В&nbsp;ближайшее время с&nbsp;вами свяжется наш менеджер.
+					</p>
+				`;
 
-			let mcrMdlWin = document.querySelector('#id-modal-product-order');
-			if (mcrMdlWin?.classList.contains('is-open')) {
-				// console.log('Close');
-				MicroModal.close('id-modal-product-order');
-			}
+				acceptedForm.innerHTML = out;
+				/**
+				 * пауза setTimeout
+				 * очищаю форму
+				 * удаляю сообщения об отправке
+				 * закрываем форму
+					 */
+				setTimeout(() => {
+					const modal = document.querySelector('#id-modal-product-order');
 
-			acceptedForm?.classList.remove('accepted');
-		}, 3000);
+					// сбрасываю значения формы
+					event.target.reset();
 
+					if (modal?.classList.contains('is-open')) {
+						MicroModal.close('id-modal-product-order');
+					}
 
+					acceptedForm?.classList.remove('accepted');
+					acceptedForm?.classList.add('hidden');
+				}, 3000);
+			})
+			.catch((data) => {
+				acceptedForm?.classList.remove('load');
+				acceptedForm?.classList.add('error');
+
+				out = `
+					<div class="form-accepted__accepted-img"></div>
+
+					<div class="form-accepted__accepted-title"> 
+						Произошла ошибка.
+					</div>
+					<p class="form-accepted__accepted-text text text__basis"> 
+						Попробуйте повторить запрос позже.
+					</p>
+				`;
+
+				acceptedForm.innerHTML = out;
+
+				/**
+				 * пауза setTimeout
+				 * удаляю сообщения об ошибке
+				 */
+				setTimeout(() => {
+					acceptedForm?.classList.add('hidden');
+					acceptedForm?.classList.remove('error');
+				}, 3000);
+			})
 	});
+
+
+

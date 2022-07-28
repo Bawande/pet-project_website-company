@@ -163,7 +163,19 @@ cooperationValidation
 
 	});
 
+async function setData(url, data) {
 
+	const response = await fetch(url, {
+		method: 'POST',
+		body: data,
+	})
+
+	if (!response.ok) {
+		throw new Error(`Error ${url}, status ${response}`)
+	}
+
+	return await response.json()
+}
 
 
 

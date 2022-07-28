@@ -470,7 +470,7 @@
 							По типу
 						</h3>
 
-						<button class="filter__btn-droplist" data-btn-droplist="">1</button>
+						<!-- <button class="filter__btn-droplist" data-btn-droplist="">1</button> -->
 
 						<!-- фильтры по типу -->
 						<ul id="filtersWrapType" class="filter__list filter--indent" data-filter-list="">
@@ -486,7 +486,7 @@
 							По сфере применения
 						</h3>
 
-						<button class="filter__btn-droplist" data-btn-droplist="">2</button>
+						<!-- <button class="filter__btn-droplist" data-btn-droplist="">2</button> -->
 
 						<!--  фильтры посфере применения -->
 						<ul id="filtersWrapAppointment" class="filter__list" data-filter-list="">
@@ -498,6 +498,8 @@
 				</div>
 
 				<div class="catalog-product__cards-list">
+
+					<!-- динамический список карточек -->
 
 					<button class="catalog-product__btn-load-more" data-load-more-button>
 						Показать еще
@@ -694,7 +696,7 @@
 							Связаться с нами
 						</button>
 
-						<div class="cooperation__accepted form-accepted">
+						<div class="cooperation__accepted form-accepted hidden">
 
 							<div class="form-accepted__accepted-img"></div>
 
@@ -1012,74 +1014,70 @@
 
 		<div class="mcrmdl-overlay" tabindex="-1" data-custom-close>
 			<!-- modal style -->
-			<div class="modal-product-order mcrmdl-container" role="dialog" aria-modal="true">
+			<div class="mcrmdl-container" role="dialog" aria-modal="true">
+				<div class="modal-product-order">
 
-				<button class="mcrmdl-close modal-product-order__close btn-close" aria-label="Закрытие диалогового окна"
-					data-custom-close></button>
+					<button class="mcrmdl-close modal-product-order__close btn-close"
+						aria-label="Закрытие диалогового окна" data-custom-close></button>
 
-				<h2 class="modal-product-order__title visually-hidden">
-					Заказать товар
-				</h2>
+					<h2 class="modal-product-order__title visually-hidden">
+						Заказать товар
+					</h2>
 
+					<!-- product ordering form -->
+					<form id="form-product-order" class="form-validate modal-product-order__form" method="POST"
+						enctype="multipart/form-data">
 
-				<!-- product ordering form -->
-				<form id="form-product-order" class="form-validate modal-product-order__form" method="POST"
-					enctype="multipart/form-data">
-
-					<div class="modal-product-order__order">Заказ</div>
-
-
-					<div class="modal-product-order__product title title--h3">Дез-6 для поверхностей
-						и оборудования,
-						500 мл с распылителем (с отдушкой). Защита от коронавируса.</div>
-
-					<input type="text" name="Артикль" id="product-article" value="" hidden>
-
-					<div class="modal-product-order__input-wrap">
-
-						<label class="modal-product-order__name input-wrap__ico input-wrap__ico--name">
-							<input class="input-name-mpo" type="text" name="Имя" placeholder="Ваше имя"
-								data-validate-field>
-						</label>
-
-						<label class="modal-product-order__tel input-wrap__ico input-wrap__ico--tel">
-							<input class="input-tel-mpo" type="tel" name="Телефон" placeholder="Телефон"
-								data-validate-field>
-						</label>
-
-						<label class="modal-product-order__mail input-wrap__ico input-wrap__ico--email">
-							<input class="input-mail-mpo" type="email" name="Почта" placeholder="Email"
-								data-validate-field>
-						</label>
-
-						<label class="modal-product-order__text input-wrap__ico input-wrap__ico--question">
-							<textarea class="input-text-mpo" name="Сообщение" placeholder="Ваш вопрос"></textarea>
-						</label>
-
-					</div>
-					<div class="modal-product-order__foter-wrap">
-						<p class="modal-product-order__note text text__note">
-							* Нажимая &laquo;Заказать звонок&raquo;, вы&nbsp;даёте согласие на&nbsp;обработку
-							персональных
-							данных
+						<p class="text">
+							Ваш заказ:
 						</p>
-						<button type="submit" class="modal-product-order__button btn">
-							Связаться с нами
-						</button>
+
+						<h3 class="modal-product-order__product title title--h3">
+
+						</h3>
+
+						<div class="modal-product-order__description">
+
+						</div>
+
+						<div class="modal-product-order__input-wrap">
+
+							<label class="modal-product-order__name input-wrap__ico input-wrap__ico--name">
+								<input class="input-name-mpo" type="text" name="Имя" placeholder="Ваше имя"
+									data-validate-field>
+							</label>
+
+							<label class="modal-product-order__tel input-wrap__ico input-wrap__ico--tel">
+								<input class="input-tel-mpo" type="tel" name="Телефон" placeholder="Телефон"
+									data-validate-field>
+							</label>
+
+							<label class="modal-product-order__mail input-wrap__ico input-wrap__ico--email">
+								<input class="input-mail-mpo" type="email" name="Почта" placeholder="Email"
+									data-validate-field>
+							</label>
+
+							<label class="modal-product-order__text input-wrap__ico input-wrap__ico--question">
+								<textarea class="input-text-mpo" name="Сообщение" placeholder="Ваш вопрос"></textarea>
+							</label>
+
+						</div>
+						<div class="modal-product-order__foter-wrap">
+							<p class="modal-product-order__note text text__note">
+								* Нажимая &laquo;Заказать звонок&raquo;, вы&nbsp;даёте согласие на&nbsp;обработку
+								персональных
+								данных
+							</p>
+							<button type="submit" class="modal-product-order__button btn">
+								Связаться с нами
+							</button>
+						</div>
+
+					</form>
+					<!-- message about successful sending -->
+					<div class="modal-product-order__accepted form-accepted hidden">
+						<!-- сообщение об ошибке -->
 					</div>
-
-				</form>
-				<!-- message about successful sending -->
-				<div class="modal-product-order__accepted form-accepted">
-
-					<div class="form-accepted__accepted-img"></div>
-
-					<div class="form-accepted__accepted-title">
-						Спасибо за обращение!
-					</div>
-					<p class="form-accepted__accepted-text text text__basis">
-						Ожидайте звонка, скоро с Вами свяжется наш менеджер
-					</p>
 				</div>
 
 
@@ -1092,51 +1090,57 @@
 
 		<div class="mcrmdl-overlay" tabindex="-1" data-custom-close>
 
-			<div class="modal-company-news mcrmdl-container" role="dialog" aria-modal="true">
+			<div class="mcrmdl-container" role="dialog" aria-modal="true">
 
-				<button class="mcrmdl-close modal-company-news__close btn-close" aria-label="Закрытие диалогового окна"
-					data-custom-close></button>
-
-				<div class="modal-company-news__img-wrap">
-					<img src="./img/modal-news/news-1.jpg" alt="">
-				</div>
-				<!--  -->
-				<div class="modal-company-news__content-wrap">
-
-					<h2 class="modal-company-news__title title title--h2">
-						«Dezaurum®» — золотой стандарт дезинфекции!
-					</h2>
+				<div class="modal-company-news">
+					<button class="mcrmdl-close modal-company-news__close btn-close"
+						aria-label="Закрытие диалогового окна" data-custom-close></button>
+					<div class="modal-company-news__img-wrap">
+						<img src="./img/modal-news/news-1.jpg" alt="">
+					</div>
 					<!--  -->
-					<div class="modal-company-news__conent text text__basis">
-						<p>Уважаемые клиенты! Рады вам сообщить, что компания ГЛОМАКО запустила производство линейки
-							дезинфицирующих средств «Dezaurum®».</p>
-						<p>Мы стремимся обеспечить наилучшее качество процессов во всех сферах деятельности нашей
-							компании. Контроль качества является неотъемлемой частью системы менеджмента качества
-							внедрённой на предприятии ООО ГЛОМАКО и включает отбор проб, проведение испытаний
-							и проверок, процедуры организации и документирования, выдачи разрешения на выпуск продукции.
-						</p>
-						<p>
-							Отдел контроля качества является независимым от производства подразделением и подчиняется
-							непосредственно генеральному директору.
-						</p>
-						<h3>Граница обучения кадров процветает</h3>
-						<p>
-							Производство расположено в 30 км от Санкт-Петербурга и оснащено современным оборудованием
-							Европейского производства. При проектировании и строительстве производственного комплекса
-							были реализованы принципы планировки фармацевтических предприятий:
-						</p>
-						<h4>Сложно сказать, почему ночь оказалась долгой</h4>
-						<p>
-							Производство расположено в 30 км от Санкт-Петербурга и оснащено современным оборудованием
-							Европейского производства. При проектировании и строительстве производственного комплекса
-							были реализованы принципы планировки фармацевтических предприятий:
-						</p>
-						<ul>
-							<li>Надёжное партнёрство</li>
-							<li>Высокое качество обслуживания и квалифицированный персонал</li>
-							<li>Высокий стандарт производства</li>
-							<li>Качество продукции согласно требований ведущих мировых компаний производителей</li>
-						</ul>
+					<div class="modal-company-news__content-wrap">
+						<h2 class="modal-company-news__title title title--h2">
+							«Dezaurum®» — золотой стандарт дезинфекции!
+						</h2>
+						<!--  -->
+						<div class="modal-company-news__conent text text__basis">
+							<p>Уважаемые клиенты! Рады вам сообщить, что компания ГЛОМАКО запустила производство линейки
+								дезинфицирующих средств «Dezaurum®».</p>
+							<p>Мы стремимся обеспечить наилучшее качество процессов во всех сферах деятельности нашей
+								компании. Контроль качества является неотъемлемой частью системы менеджмента качества
+								внедрённой на предприятии ООО ГЛОМАКО и включает отбор проб, проведение испытаний
+								и проверок, процедуры организации и документирования, выдачи разрешения на выпуск
+								продукции.
+							</p>
+							<p>
+								Отдел контроля качества является независимым от производства подразделением
+								и подчиняется
+								непосредственно генеральному директору.
+							</p>
+							<h3>Граница обучения кадров процветает</h3>
+							<p>
+								Производство расположено в 30 км от Санкт-Петербурга и оснащено современным
+								оборудованием
+								Европейского производства. При проектировании и строительстве производственного
+								комплекса
+								были реализованы принципы планировки фармацевтических предприятий:
+							</p>
+							<h4>Сложно сказать, почему ночь оказалась долгой</h4>
+							<p>
+								Производство расположено в 30 км от Санкт-Петербурга и оснащено современным
+								оборудованием
+								Европейского производства. При проектировании и строительстве производственного
+								комплекса
+								были реализованы принципы планировки фармацевтических предприятий:
+							</p>
+							<ul>
+								<li>Надёжное партнёрство</li>
+								<li>Высокое качество обслуживания и квалифицированный персонал</li>
+								<li>Высокий стандарт производства</li>
+								<li>Качество продукции согласно требований ведущих мировых компаний производителей</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 
@@ -1150,127 +1154,40 @@
 
 		<div class="mcrmdl-overlay" tabindex="-1" data-custom-close>
 			<!-- modal style -->
-			<div class="modal-product-card mcrmdl-container" role="dialog" aria-modal="true">
+			<div class="mcrmdl-container" role="dialog" aria-modal="true">
 
-				<button class="mcrmdl-close modal-product-card__close btn-close" aria-label="Закрытие диалогового окна"
-					data-custom-close></button>
-
-				<h2 class="modal-product-card__title visually-hidden">
-					Подробно о товаре
-				</h2>
-				<!-- images-wrapper -->
-				<div class="modal-product-card__images-wrapper mpc">
-					<!-- основной свайпер -->
-					<div class="modal-product-card__large-images mpc__lrg-img-swp swiper">
-
-						<div class="mpc__lrg-img-swp-wrp swiper-wrapper">
-							<!-- Slides -->
-							<div class="mpc__lrg-img-swp-sld swiper-slide">
-								<div class="mpc__lrg-img-sld-wrap">
-									<img src="./img/catalog/big-img/image-01.jpg" alt="">
-								</div>
+				<div class="modal-product-card">
+					<button class="mcrmdl-close modal-product-card__close btn-close"
+						aria-label="Закрытие диалогового окна" data-custom-close></button>
+					<h2 class="modal-product-card__title visually-hidden">
+						Подробно о товаре
+					</h2>
+					<!-- images-wrapper -->
+					<div class="modal-product-card__images-wrapper mpc">
+						<!-- основной свайпер -->
+						<div class="modal-product-card__large-images mpc__lrg-img-swp swiper">
+							<div class="mpc__lrg-img-swp-wrp swiper-wrapper">
+								<!-- Slides -->
 							</div>
-							<div class="mpc__lrg-img-swp-sld swiper-slide">
-								<div class="mpc__lrg-img-sld-wrap">
-									<img src="./img/catalog/big-img/image-02.jpg" alt="">
-								</div>
-							</div>
-							<div class="mpc__lrg-img-swp-sld swiper-slide">
-								<div class="mpc__lrg-img-sld-wrap">
-									<img src="./img/catalog/big-img/image-03.jpg" alt="">
-								</div>
-							</div>
-							<div class="mpc__lrg-img-swp-sld swiper-slide">
-								<div class="mpc__lrg-img-sld-wrap">
-									<img src="./img/catalog/big-img/image-04.jpg" alt="">
-								</div>
+						</div>
+						<!-- вспомогательный -->
+						<div class="modal-product-card__small-images mpc__sml-img-swp swiper">
+							<div class="mpc__sml-img-swp-wrp swiper-wrapper">
+								<!-- Slides -->
 							</div>
 						</div>
 					</div>
-					<!-- вспомогательный -->
-					<div class="modal-product-card__small-images mpc__sml-img-swp swiper">
-
-						<div class="mpc__sml-img-swp-wrp swiper-wrapper">
-							<!-- Slides -->
-							<div class="mpc__sml-img-swp-sld swiper-slide">
-								<div class="mpc__sml-img-sld-wrap">
-									<img src="./img/catalog/big-img/image-01.jpg" alt="">
-								</div>
-							</div>
-							<!-- Slides -->
-							<div class="mpc__sml-img-swp-sld swiper-slide">
-								<div class="mpc__sml-img-sld-wrap">
-									<img src="./img/catalog/big-img/image-02.jpg" alt="">
-								</div>
-							</div>
-							<!-- Slides -->
-							<div class="mpc__sml-img-swp-sld swiper-slide">
-								<div class="mpc__sml-img-sld-wrap">
-									<img src="./img/catalog/big-img/image-03.jpg" alt="">
-								</div>
-							</div>
-							<!-- Slides -->
-							<div class="mpc__sml-img-swp-sld swiper-slide">
-								<div class="mpc__sml-img-sld-wrap">
-									<img src="./img/catalog/big-img/image-04.jpg" alt="">
-								</div>
-							</div>
-
+					<!-- description-wrapper -->
+					<div class="modal-product-card__description-wrapper">
+						<h3 class="modal-product-card__product-title title title--h3"></h3>
+						<button class="modal-product-card__order-btn btn" data-product-order-btn>
+							Заказать
+						</button>
+						<div class="modal-product-card__content text">
 						</div>
 					</div>
-
 				</div>
-				<!-- description-wrapper -->
-				<div class="modal-product-card__description-wrapper">
 
-					<div id="product-modal-article" class="modal-product-card__product-article"
-						data-product-modal-article data-signature="Артикль:"></div>
-
-					<h3 class="modal-product-card__product-title title title--h3">
-						Жидкое мыло Dezaurum, 500 мл флакон с дозатором (без отдушки). Защита от коронавируса.
-					</h3>
-
-					<button class="modal-product-card__order-btn btn" data-product-order-btn>
-						Заказать
-					</button>
-
-					<div class="modal-product-card__product-description text">
-
-						<p>Жидкое мыло для профессионального использования</p>
-
-						<ul>
-							<li>Готовое к применению средство</li>
-							<li>Экономично расходуется</li>
-							<li>Не вызывает аллергий и повреждения кожи. Не содержит агрессивных щелочей
-								и аллергенных компонентов</li>
-							<li>Все компоненты в составе средства биоразлагаемы и экологически безопасны</li>
-							<li>pH 5,5</li>
-						</ul>
-
-					</div>
-
-					<div class="modal-product-card__product-structure" data-signature="Состав:">
-						молочная кислота, комплекс природных ПАВ – кокамид, лауретсульфат натрия, кокамидопропиловый
-						бетаин, комплекс ухаживающих и предотвращающих повреждения кожи компонентов.
-					</div>
-
-					<div class="modal-product-card__product-storage" data-signature="Срок годности:">
-						3 года
-					</div>
-
-					<div class="modal-product-card__product-pack" data-signature="Упаковка:">
-						500 мл флакон с дозатором
-					</div>
-
-					<div class="modal-product-card__product-maker" data-signature="Производитель:">
-						CLEAN + SAFE
-					</div>
-
-					<div class="modal-product-card__product-brand" data-signature="Бренд:">
-						Dezaurum
-					</div>
-
-				</div>
 			</div>
 		</div>
 	</div>
@@ -1280,71 +1197,75 @@
 
 		<div class="mcrmdl-overlay" tabindex="-1" data-custom-close>
 			<!-- modal style -->
-			<div class="mcrmdl-container modal-callback" role="dialog" aria-modal="true">
+			<div class="mcrmdl-container" role="dialog" aria-modal="true">
 
-				<button class="mcrmdl-close modal-callback__close btn-close" aria-label="Закрытие диалогового окна"
-					data-custom-close></button>
+				<div class="modal-callback">
 
-				<h2 class="visually-hidden" id="modal-callback-title">
-					Заказать звонок
-				</h2>
+					<button class="mcrmdl-close modal-callback__close btn-close" aria-label="Закрытие диалогового окна"
+						data-custom-close></button>
 
-				<div class="modal-callback__topic-wrap">
+					<h2 class="visually-hidden" id="modal-callback-title">
+						Заказать звонок
+					</h2>
 
-					<p class="modal-callback__call title title--call">
-						Укажите ваши <br> контактные данные, и&nbsp;мы&nbsp;свяжемся с&nbsp;Вами
-					</p>
+					<div class="modal-callback__topic-wrap">
 
-					<img src="./img/modal-callback__logo-white.svg" alt="Логотип Glomaco" class="modal-callback__logo">
-				</div>
+						<p class="modal-callback__call title title--call">
+							Укажите ваши <br> контактные данные, и&nbsp;мы&nbsp;свяжемся с&nbsp;Вами
+						</p>
 
-				<form id="form-callback-modal" class="form-validate modal-callback__form" method="POST"
-					enctype="multipart/form-data">
-
-					<div class="modal-callback__input-wrap">
-
-						<label>
-							<input type="hidden" name="position">
-						</label>
-
-						<label class="modal-callback__input input-wrap__ico input-wrap__ico--name">
-							<input class="input-name-mc" type="text" name="Имя" placeholder="Ваше имя"
-								data-validate-field>
-						</label>
-
-						<label class="modal-callback__input input-wrap__ico input-wrap__ico--tel">
-							<input class="input-tel-mc" type="tel" name="Телефон" placeholder="Телефон"
-								data-validate-field>
-						</label>
-
-						<label class="modal-callback__input input-wrap__ico input-wrap__ico--email">
-							<input class="input-mail-mc" type="email" name="Почта" placeholder="Email"
-								data-validate-field>
-						</label>
+						<img src="./img/modal-callback__logo-white.svg" alt="Логотип Glomaco"
+							class="modal-callback__logo">
 					</div>
 
-					<p class="modal-callback__note text text__note">
-						* Нажимая &laquo;Заказать звонок&raquo;, вы&nbsp;даёте согласие на&nbsp;обработку
-						персональных
-						данных
-					</p>
+					<form id="form-callback-modal" class="form-validate modal-callback__form" method="POST"
+						enctype="multipart/form-data">
 
-					<button type="submit" class="modal-callback__button btn">
-						Связаться с нами
-					</button>
+						<div class="modal-callback__input-wrap">
 
-				</form>
+							<label>
+								<input type="hidden" name="position">
+							</label>
 
-				<div class="modal-callback__accepted form-accepted">
+							<label class="modal-callback__input input-wrap__ico input-wrap__ico--name">
+								<input class="input-name-mc" type="text" name="Имя" placeholder="Ваше имя"
+									data-validate-field>
+							</label>
 
-					<div class="form-accepted__accepted-img"></div>
+							<label class="modal-callback__input input-wrap__ico input-wrap__ico--tel">
+								<input class="input-tel-mc" type="tel" name="Телефон" placeholder="Телефон"
+									data-validate-field>
+							</label>
 
-					<div class="form-accepted__accepted-title">
-						Спасибо за обращение!
+							<label class="modal-callback__input input-wrap__ico input-wrap__ico--email">
+								<input class="input-mail-mc" type="email" name="Почта" placeholder="Email"
+									data-validate-field>
+							</label>
+						</div>
+
+						<p class="modal-callback__note text text__note">
+							* Нажимая &laquo;Заказать звонок&raquo;, вы&nbsp;даёте согласие на&nbsp;обработку
+							персональных
+							данных
+						</p>
+
+						<button type="submit" class="modal-callback__button btn">
+							Связаться с нами
+						</button>
+
+					</form>
+
+					<div class="modal-callback__accepted form-accepted hidden">
+
+						<div class="form-accepted__accepted-img"></div>
+
+						<div class="form-accepted__accepted-title">
+							Спасибо за обращение!
+						</div>
+						<p class="form-accepted__accepted-text text text__basis">
+							Ожидайте звонка, скоро с Вами свяжется наш менеджер
+						</p>
 					</div>
-					<p class="form-accepted__accepted-text text text__basis">
-						Ожидайте звонка, скоро с Вами свяжется наш менеджер
-					</p>
 				</div>
 
 			</div>

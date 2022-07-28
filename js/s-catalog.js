@@ -1,9 +1,11 @@
 import pruductDBJSON from "./_catalog_objects.mjs"
 import loadInitialCards from "./_catalog_load-cards.mjs"
 import loadInitialFilters from "./_catalog_load-filter.mjs"
+import filtersDropDownMenu from "./_catalog_drop-menu.mjs"
 
 localStorage.setItem("product", JSON.stringify(pruductDBJSON));
 
+const cards = JSON.parse(localStorage.getItem("product"));
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -11,26 +13,20 @@ window.addEventListener('DOMContentLoaded', () => {
 	loadInitialFilters('#filtersWrapType', 'type');
 	loadInitialFilters('#filtersWrapAppointment', 'appointment');
 
-	// применение классов стилей для фильтров в зависимости от разрешения окна
-	overridesStyleSelector();
+	//определение типа селекторов фильтра (мобильный/компьтер)
+	definingTypeFilterSelectors();
 
 	// обработчик состояний селектора
-	handlerStatusSelector();
-
-	// инициализация карточек каталога товара
-	const loadMoreButton = document.querySelector("[data-load-more-button]");
-	const cards = JSON.parse(localStorage.getItem("product"));
+	// handlerStatusSelector();
 
 	// инициализация и вывод карточек товара
-	// const filterCards = filteringArray(cards);
-	// console.log(filterCards)
-
-	loadInitialCards(filteringArray(cards));
+	loadInitialCards(filteringArray(cards, getValueActiveFilter()));
 
 	// слушатель на кнопку загрузить еще
-	loadMoreButton.addEventListener('click', () => {
-		loadInitialCards(filteringArray(cards), true);
-	})
+	document.querySelector("[data-load-more-button]")
+		.addEventListener('click', () => {
+			loadInitialCards(filteringArray(cards, getValueActiveFilter()), true);
+		})
 
 	/**
 	* отследить событе нажатие селектора тега фильтра
@@ -38,36 +34,226 @@ window.addEventListener('DOMContentLoaded', () => {
 	* отсортировать массив карточек
 	* вывести массив
 	*/
+	delegatingEventsClick('[data-filter]', '.filter__item input[type=radio]', () => {
+		loadInitialCards(filteringArray(cards, getValueActiveFilter()))
+	});
 
-	const filtersList = document.querySelectorAll('[data-filter]');
+	// отслеживания событий изменения размера вьюпорта
+	window.addEventListener('resize', () => {
+		//определение типа селекторов фильтра (мобильный/компьтер)
+		definingTypeFilterSelectors();
+	});
 
-	filtersList.forEach((el) => {
 
-		el.addEventListener('click', event => {
+	// инициализация дропдаун меню
+	filtersDropDownMenu();
 
-			if (event.target.closest('.filter__item input[type=radio]')) {
+	// инициализация логики запуска модального окна
+	openOrderCard();
 
-				loadInitialCards(filteringArray(cards));
-			}
-
-		})
-
-	})
-
+	openProductOrder();
 
 	// END DOMContentLoaded
 })
 
+/**
+ * функция openOrderCard логика открытия модального окна карточки товара product-card
+ * повесить слушатель на контейнер карточек
+ * отследить событие клика по карточке
+ * получить id номер карточки
+ * получить объект по id
+ * деструктурировать объект
+ * обработать данные
+ * вывести данные на страницу
+ * запустить модальное окно
+ */
+function openOrderCard() {
 
-function filteringArray(arr) {
+	document.querySelector('.catalog-product__cards-list')
+		.addEventListener('click', (event) => {
+			if (event.target.closest('[data-product-card-article]')) {
+				const idCardValue = event.target.closest('[data-product-card-article]').dataset.productCardArticle;
 
-	const filter = arr.filter(el => {
-		const activeFilters = getValueActiveFilter();
+				// получение данных 
+				let objectCard;
+				cards.forEach((card) => {
+					if (card['id'] === idCardValue) {
+						objectCard = JSON.parse(JSON.stringify(card));
+					}
+				})
+
+				// добавим карточку товара в localstorage
+				localStorage.setItem("cardOrder", JSON.stringify(objectCard));
+
+				// определение переменных
+				const { name, type, appointment, images, description, term, ...other } = objectCard;
+				const modalTitle = document.querySelector('.modal-product-card__product-title');
+				const modalDescription = document.querySelector('.modal-product-card__content');
+				const modalImgSwiper = document.querySelector('.mpc__lrg-img-swp-wrp');
+				const modalImgSwiperSmall = document.querySelector('.mpc__sml-img-swp-wrp');
+				let contentOut = '';
+				let swiperBigImgOut = '';
+				let swiperSmallImgOut = '';
+
+				// обработка данных
+				contentOut = `
+				<div data-modal-description>
+				<div class="modal-product-card__product-pack" data-signature="Назначение/цели применения:">
+					${type.slice(1).join(', ')}
+				</div>
+
+				<div class="modal-product-card__product-description text">
+					${description}
+				</div>
+					
+				<div class="modal-product-card__product-storage" data-signature="Срок годности средства:">
+					${term}
+				</div>
+				</div>
+				`;
+
+				images.forEach(img => {
+					swiperBigImgOut += `
+					<!-- Slide -->
+					<div class="mpc__lrg-img-swp-sld swiper-slide">
+						<div class="mpc__lrg-img-sld-wrap">
+							<img src="./catalog/${idCardValue}/${img}" alt="">
+						</div>
+					</div>
+					`;
+				})
+
+				images.forEach(img => {
+					swiperSmallImgOut += `
+					<!-- Slide -->
+					<div class="mpc__sml-img-swp-sld swiper-slide">
+						<div class="mpc__sml-img-sld-wrap">
+							<img src="./catalog/${idCardValue}/${img}" alt="">
+						</div>
+					</div>
+					`;
+				})
+
+
+				// вывод данных 
+				modalTitle.innerText = name;
+				modalDescription.innerHTML = contentOut;
+				modalImgSwiper.innerHTML = swiperBigImgOut;
+				modalImgSwiperSmall.innerHTML = swiperSmallImgOut;
+				// modalDescription.insertAdjacentHTML('beforeend', contentOut);
+
+
+				// запускаем модальное окно
+				MicroModal.show('id-modal-product-card', {
+					// onShow: modal => console.info(`${modal.id} is shown`), // [1]
+					onClose: (modal) => {
+						// удалим карточку товара в localstorage
+						localStorage.removeItem("cardOrder");
+					},
+					openTrigger: 'data-custom-open',
+					closeTrigger: 'data-custom-close',
+					openClass: 'is-open',
+					disableScroll: true,
+					disableFocus: true,
+				});
+				// console.log(idCardValue)
+			}
+		})
+}
+
+/**
+ * функция openProductOrder логика открытия модального окна офрмления заказа id-modal-product-order
+ * отследить событие нажатия мыши на кнопку
+ * получить данные из localstorage о карточке товара cardOrder
+ * обработать данные
+ * вывести данные
+ * запустить модальное окно id-modal-product-order
+ * закрыть модальное окно карточки товара id-modal-product-card
+ */
+function openProductOrder() {
+	document.querySelector('#id-modal-product-card')
+		.addEventListener('click', event => {
+			if (event.target.closest('[data-product-order-btn]')) {
+				// получение данных из localstorage
+				const orderCard = JSON.parse(localStorage.getItem("cardOrder"));
+				// закрыть модальное окно id-modal-product-card
+				MicroModal.close('id-modal-product-card');
+				// обработка данных
+				const orderModalWin = document.querySelector('#id-modal-product-order')
+				const orderTitle = orderModalWin.querySelector('.modal-product-order__product')
+				// const orderID = orderModalWin.querySelector('input[name="product-id"]')
+				const orderDescription = orderModalWin.querySelector('.modal-product-order__description')
+				const orderName = orderModalWin.querySelector('input[name="product-name"]')
+
+				const { id, name, ...other } = orderCard;
+				const out = `
+					<input type="text" name="product-id" value="${id}" hidden>
+					<input type="text" name="product-name" value="${name}" hidden>
+				`;
+				// вывод данных
+				orderTitle.innerText = name;
+				orderDescription.innerHTML = out;
+				// открытие модального окна формления заказа
+				MicroModal.show('id-modal-product-order', {
+					// onShow: modal => console.info(`${modal.id} is shown`), // [1]
+					// onClose: modal => console.info(`${modal.id} is hidden`), // [2]
+					openTrigger: 'data-custom-open',
+					closeTrigger: 'data-custom-close',
+					openClass: 'is-open',
+					disableScroll: true,
+					disableFocus: true,
+				});
+				console.log(orderName)
+			}
+		})
+
+}
+
+/**
+ * Функция делегирования событий. Позволяет отслеживать всплытие и перехват событий
+ * При выполнении условия выполняет callback функцию
+ * доступны переменные event (объекта) и area (область)
+ * @param {*} areaEventSelector имя селектора области события нажатия мыши
+ * @param {*} objEventSelector имя селектора объекта события нажатия мыши
+ * @param {*} callbackFunctionEvent функция которая будет выполнена в случае если условие будет выполнено
+ * @returns логическое значения, если область найдена true, если нет false
+ */
+function delegatingEventsClick(areaEventSelector, objEventSelector, callbackFunctionEvent) {
+
+	let result = false;
+	document.querySelectorAll(`${areaEventSelector}`)
+		.forEach((area) => {
+			result = true;
+			area.addEventListener('click', event => {
+				if (event.target.closest(`${objEventSelector}`)) {
+					callbackFunctionEvent();
+				}
+			})
+
+		})
+
+	return result;
+}
+
+/**
+ * функция поиска элементов массива подходящих под все условия фильтрации
+ * @param {array} arrObjects массив объектов
+ * @param {array} arrayFilters массив фильтров {key: секция value: активный селектор}
+ * @returns отфильтрованный массив
+ */
+function filteringArray(arrObjects, arrayFilters) {
+
+	// перебор с фильтрацией основного массива
+	return arrObjects.filter((el) => {
 		let result = true;
 
-		activeFilters.forEach(object => {
+		// перебор массива фильтров
+		arrayFilters.forEach((object) => {
+
+			// поиск совпадения фильтров в основном массиве по ключу
 			for (const key in object) {
 				const element = object[key];
+
 				if (el[key].indexOf(element) === -1) {
 					result = false;
 					break
@@ -76,47 +262,50 @@ function filteringArray(arr) {
 		})
 		return result
 	})
-
-	return filter;
 }
 
 /**
- * получить значение секции тега фильтров
- * получить состояние активного фильтра
- * 
- * @returns массив объектов key: имя секции фильтра value: состояний селекторов фильтра
+ * функция ищет в ДОМ активный селектор фильтра .filter__item
+ * функция ищет в ДОМ название секций селекторов [data-filter-list]
+ * @returns массив объектов {key: секция value: активный селектор}
  */
 function getValueActiveFilter() {
-	const filtersList = document.querySelectorAll('[data-filter]');
 	const arrayResult = [];
 
-	filtersList.forEach((el) => {
-		const brnSelected = el.querySelector('[data-btn-droplist]')?.innerText;
-		const filterList = el.querySelector('[data-filter-list]')?.dataset.filterList;
-		arrayResult.push({ [filterList]: brnSelected })
-	})
-	// console.log(arrayResult)
+	document.querySelectorAll('[data-filter]')
+		.forEach((area) => {
+			let selectorCheck = undefined;
+			area.querySelectorAll('.filter__item')
+				.forEach(el => {
+					if (el.querySelector('input[type="radio"]').checked) {
+						selectorCheck = el.querySelector('label').innerText;
+					}
+				})
+
+			const filterList = area.querySelector('[data-filter-list]')?.dataset.filterList;
+			arrayResult.push({ [filterList]: selectorCheck })
+		})
 	return arrayResult;
 }
 
-/**
- * 
- * @param {*} filter 
- * @param {*} key 
- * @param {*} array 
- * @returns 
- */
-function filteringArrayCards(filter, key, array) {
+// /**
+//  * 
+//  * @param {*} filter 
+//  * @param {*} key 
+//  * @param {*} array 
+//  * @returns 
+//  */
+// function filteringArrayCards(filter, key, array) {
 
-	const resultArray = array.filter((el) => {
+// 	const resultArray = array.filter((el) => {
 
-		if (Array.isArray(el[key])) {
-			return el[key].indexOf(filter) !== -1 ? true : false;
-		}
-	})
+// 		if (Array.isArray(el[key])) {
+// 			return el[key].indexOf(filter) !== -1 ? true : false;
+// 		}
+// 	})
 
-	return resultArray;
-}
+// 	return resultArray;
+// }
 
 
 
@@ -264,15 +453,13 @@ function showCards(count) {
 */
 
 
-// отслеживания событий вьюпорта
-// вызывает функцию переопределения стиля селектора 
-window.addEventListener('resize', (event) => {
-	overridesStyleSelector();
-});
 
-// функция переопределяет стили элементов блока селекторов
-// в зависимости от размера вьюпорта
-function overridesStyleSelector() {
+
+/**
+ * определение типа селекторов фильтра в зависимосимости от размера экрана (мобильный/компьтер)
+ * 
+ */
+function definingTypeFilterSelectors() {
 
 	const widthWind = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	const filterList = document.querySelectorAll('.filter__list')
@@ -283,7 +470,7 @@ function overridesStyleSelector() {
 		// селекторы
 		filterItem.forEach((el) => {
 			el.classList.remove('teg');
-			el.classList.add('teg-droplist');
+			el.classList.add('teg-mobile');
 		});
 		// обертка селекторов
 		filterList.forEach((el) => {
@@ -294,12 +481,11 @@ function overridesStyleSelector() {
 		brnsSelected.forEach((el) => {
 			el.classList.remove('hidden');
 		});
-
-
 	} else {
+
 		// селекторы
 		filterItem.forEach((el) => {
-			el.classList.remove('teg-droplist');
+			el.classList.remove('teg-mobile');
 			el.classList.add('teg');
 		});
 		// обертка селекторов
@@ -312,75 +498,7 @@ function overridesStyleSelector() {
 		brnsSelected.forEach((el) => {
 			el.classList.add('hidden');
 		});
-
 	}
 }
-// вызов функции
 
 
-// работа с селекторами (тегами) фильтра на мобильных телефонах
-function handlerStatusSelector() {
-
-	const filtersList = document.querySelectorAll('[data-filter]');
-
-	filtersList.forEach((filterWrap) => {
-
-		const brnSelected = filterWrap.querySelector('[data-btn-droplist]');
-		const listSelector = filterWrap.querySelectorAll('input[type=radio]')
-		const checkedSelector = filterWrap.querySelector('input[checked] ~ label')?.innerText;
-		const filterList = filterWrap.querySelector('.filter__list')
-
-		const pageWrapper = document.querySelector('[data-menu-overlay]');
-		const body = document.body;
-
-		brnSelected.innerHTML = checkedSelector;
-
-		// console.log(brnSelected);
-		// console.log(checkedSelector);
-		// console.log(listSelector);
-
-		// логика выбора активного селектора
-		// логика закрытия по выбору/нажатию селектора
-		listSelector?.forEach((e) => {
-
-			e.addEventListener('click', event => {
-				const selectorValue = event.target.closest('.filter__item')?.innerText;
-				brnSelected.innerHTML = selectorValue;
-				// console.log(selectorValue)
-				if (pageWrapper?.classList.contains('active')) {
-
-					filterList?.classList.add('hidden');
-
-					setTimeout(() => {
-						body?.classList.remove('sb-stop-scroll');
-						pageWrapper?.classList.remove('active');
-					}, 10)
-				}
-			})
-
-		})
-
-		// логика открытия меню фильтров
-		brnSelected?.addEventListener('click', () => {
-
-			filterList.classList.remove('hidden');
-			body?.classList.add('sb-stop-scroll');
-			pageWrapper?.classList.add('active');
-		})
-
-		// логика закрытия по нажатию клавиши
-		window.addEventListener('keydown', function (event) {
-
-			if (pageWrapper?.classList.contains('active') && event.key === "Escape") {
-
-				filterList?.classList.add('hidden');
-
-				setTimeout(() => {
-					body?.classList.remove('sb-stop-scroll');
-					pageWrapper?.classList.remove('active');
-				}, 10)
-			}
-		});
-
-	})
-}

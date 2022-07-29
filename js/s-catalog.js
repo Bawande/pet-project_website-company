@@ -1,7 +1,10 @@
+
+
 import pruductDBJSON from "_catalog_objects.mjs"
 import loadInitialCards from "catalog_load-cards.mjs"
 import loadInitialFilters from "../js/_catalog_load-filter.mjs"
 import filtersDropDownMenu from "./_catalog_drop-menu.mjs"
+
 import pruductDBJSON from "_catalog_objects.js"
 import loadInitialCards from "catalog_load-cards.js"
 import loadInitialFilters from "../js/_catalog_load-filter.js"

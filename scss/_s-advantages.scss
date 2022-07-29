@@ -4,8 +4,8 @@
 	background-color: var(--clr-haze);
 
 	&__container {
-		padding-top: 128px;
-		padding-bottom: 128px;
+		padding-top: var(--section-offset);
+		padding-bottom: var(--section-offset);
 	}
 
 	&__title {
@@ -74,8 +74,6 @@
 		width: 100%;
 		height: auto;
 		line-height: 1.65;
-		// max-width: 305px;
-		// max-height: 130px;
 		overflow: hidden;
 	}
 

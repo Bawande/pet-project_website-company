@@ -12,6 +12,7 @@
 
 	&__logo {
 		flex-grow: 1;
+		padding-left: 12px;
 	}
 
 	&__feedback {
@@ -30,12 +31,20 @@
 	&__sidebar{
 		flex-basis: 56px;
 		flex-shrink: 0;
+		margin-right: 13px;
 	}
 
 // ---- media start ----
 
-	@media screen and (max-width: 1024px){
-	
+	@media screen and (max-width: 1024px) {
+		
+		&__logo {
+			padding-left: 0;
+		}
+
+		&__sidebar{
+			margin-right: 0;
+		}
 	}
 
 	@media screen and (max-width: 768px){

@@ -1,7 +1,7 @@
 // --------------  секция вакансии
 
 .vacancies {
-	padding-top: 128px;
+	padding-top: var(--section-offset);
 
 	&__container {
 		display: flex;
@@ -10,7 +10,7 @@
 	}
 
 	&__img-wrap {
-		flex-basis: calc(50% - var(--container-offset));
+		flex-basis: calc(54% - var(--container-offset));
 		flex-shrink: 0;
 		margin-right: 32px;
 		background-color: var(--clr-smalt--light);
@@ -30,6 +30,8 @@
 
 	&__content-wrap {
 		flex-basis: 528px;
+		width: 100%;
+		max-width: 528px;
 	}
 
 	&__title {

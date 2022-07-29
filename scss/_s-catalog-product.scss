@@ -2,7 +2,7 @@
 
 .catalog-product {
 	
-	padding-top: 128px;
+	padding-top: var(--section-offset);
 
 	&__title {
 		margin-bottom: 48px;
@@ -183,16 +183,17 @@
 		width: 100%;
 		height: 290px;
 		max-width: 296px;
-		background-color: var(--clr-haze);
+		background-color: var(--clr-white);
 		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
 	}
 
-	&__img-wrap img {
+	&__img-container img {
 		display: block;
-		width: 100%;
 		height: 100%;
-		object-fit: cover;
-		object-position: center;
+		width: 100%;
+		object-fit: scale-down;
 	}
 
 	&__description-wrap {

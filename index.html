@@ -687,25 +687,19 @@
 								<textarea class="input-text-cprt" name="Сообщение" placeholder="Ваш вопрос"></textarea>
 							</label>
 						</div>
-						<p class="cooperation__note text text__note">
-							* Нажимая &laquo;Заказать звонок&raquo;, вы&nbsp;даёте согласие на&nbsp;обработку
-							персональных
-							данных
-						</p>
-						<button type="submit" class="cooperation__button btn">
-							Связаться с нами
-						</button>
-
-						<div class="cooperation__accepted form-accepted hidden">
-
-							<div class="form-accepted__accepted-img"></div>
-
-							<div class="form-accepted__accepted-title">
-								Спасибо за обращение!
-							</div>
-							<p class="form-accepted__accepted-text text text__basis">
-								Ожидайте звонка, скоро с Вами свяжется наш менеджер
+						<div class="cooperation__footer">
+							<p class="cooperation__note text text__note">
+								* Нажимая &laquo;Заказать звонок&raquo;, вы&nbsp;даёте согласие на&nbsp;обработку
+								персональных
+								данных
 							</p>
+							<button type="submit" class="cooperation__button btn">
+								Связаться с нами
+							</button>
+						</div>
+
+						<div class="cooperation__message-status message-status hidden">
+							<!--  -->
 						</div>
 
 					</form>
@@ -1075,8 +1069,8 @@
 
 					</form>
 					<!-- message about successful sending -->
-					<div class="modal-product-order__accepted form-accepted hidden">
-						<!-- сообщение об ошибке -->
+					<div class="modal-product-order__message-status message-status hidden">
+						<!-- сообщение об отправке -->
 					</div>
 				</div>
 
@@ -1255,16 +1249,8 @@
 
 					</form>
 
-					<div class="modal-callback__accepted form-accepted hidden">
-
-						<div class="form-accepted__accepted-img"></div>
-
-						<div class="form-accepted__accepted-title">
-							Спасибо за обращение!
-						</div>
-						<p class="form-accepted__accepted-text text text__basis">
-							Ожидайте звонка, скоро с Вами свяжется наш менеджер
-						</p>
+					<div class="modal-callback__message-status message-status hidden">
+						<!--  -->
 					</div>
 				</div>
 
@@ -1284,6 +1270,7 @@
 	<script src="./js/s-advantages.js"></script>
 	<script src="./js/s-brend.js"></script>
 	<script type="module" src="./js/s-catalog.js"></script>
+	<script src="./js/s-cooperation.js"></script>
 	<script src="./js/s-about-us.js"></script>
 	<script src="./js/s-news.js"></script>
 	<script src="./js/m-callback.js"></script>

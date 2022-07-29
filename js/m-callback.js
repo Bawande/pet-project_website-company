@@ -57,45 +57,91 @@ modalValidation
 	.onSuccess((event) => {
 		// console.log('Validation passes and form submitted', event);
 
-		let formData = new FormData(event.target);
+		const formData = new FormData(event.target);
+		const messageWrapper = document.querySelector('.modal-callback__message-status');
 
-		console.log(...formData);
+		let out = `
+		<div class="message-status__img"></div>
 
-		// let xhr = new XMLHttpRequest();
+		<div class="message-status__title"> 
+			Ожидайте!
+		</div>
+		<p class="message-status__text text text__basis"> 
+			Ваша заявка обрабатывается.
+		</p>
+		`;
 
-		// xhr.onreadystatechange = function () {
-		// 	if (xhr.readyState === 4) {
-		// 		if (xhr.status === 200) {
-		// 			console.log('Отправлено');
-		// 		}
-		// 	}
-		// }
+		messageWrapper.innerHTML = out;
 
-		// xhr.open('POST', 'mail.php', true);
-		// xhr.send(formData);
+		// добавляю класс формы отправленно 
+		// вывожу сообщение об отправке
+		messageWrapper?.classList.remove('hidden');
+		messageWrapper?.classList.add('load');
 
-		// добавляю класс формы отправленно / вывожу сообщение об отправке
-		let acceptedForm = document.querySelector('.modal-callback__accepted');
-		acceptedForm?.classList.add('accepted');
+		setData('https://jsonplaceholder.typicode.com/posts', formData)
+			.then(() => {
 
-		// сбрасываю значения формы
-		event.target.reset();
+				messageWrapper?.classList.remove('load');
+				messageWrapper?.classList.add('accepted');
 
-		// пауза
-		// закрытие окна если оно есть 
-		// удаляю значения стиля отпралено
-		// удаляю значения позиции вызванной формы
-		setTimeout(() => {
+				out = `
+				<div class="message-status__img"></div>
 
-			let mcrMdlWin = document.querySelector('#id-modal-callback');
-			if (mcrMdlWin?.classList.contains('is-open')) {
-				// console.log('Close');
-				MicroModal.close('id-modal-callback');
-			}
+				<div class="message-status__title"> 
+					Спасибо!
+				</div>
+				<p class="message-status__text text text__basis"> 
+					Ваша заявка принята. В&nbsp;ближайшее время с&nbsp;вами свяжется наш менеджер.
+				</p>
+				`;
 
-			acceptedForm?.classList.remove('accepted');
-			posForm.setAttribute('value', '');
-		}, 3000);
+				messageWrapper.innerHTML = out;
+				/**
+				 * пауза setTimeout
+				 * очищаю форму
+				 * удаляю сообщения об отправке
+				 * закрываем форму
+					 */
+				setTimeout(() => {
+					const modal = document.querySelector('#id-modal-callback');
+
+					// сбрасываю значения формы
+					event.target.reset();
+
+					if (modal?.classList.contains('is-open')) {
+						MicroModal.close('id-modal-callback');
+					}
+
+					messageWrapper?.classList.remove('accepted');
+					messageWrapper?.classList.add('hidden');
+				}, 3000);
+			})
+			.catch((data) => {
+				messageWrapper?.classList.remove('load');
+				messageWrapper?.classList.add('error');
+
+				out = `
+				<div class="message-status__img"></div>
+
+				<div class="message-status__title"> 
+					Произошла ошибка.
+				</div>
+				<p class="message-status__text text text__basis"> 
+					Попробуйте повторить запрос позже.
+				</p>
+			`;
+
+				messageWrapper.innerHTML = out;
+
+				/**
+				 * пауза setTimeout
+				 * удаляю сообщения об ошибке
+				 */
+				setTimeout(() => {
+					messageWrapper?.classList.add('hidden');
+					messageWrapper?.classList.remove('error');
+				}, 3000);
+			})
 
 
 	});

@@ -1,14 +1,14 @@
 // --------------  секция о компании
 
 .about-us {
-	padding-top: 128px;
+	padding-top: var(--section-offset);
 
 	&__navigation{
 		display: none;
 	}
 
 	&__external-block{
-		flex-basis: calc(100vw / 2);
+		flex-basis: calc(100vw / 2 - 8px);
 		height: 664px;
 	}
 
@@ -21,13 +21,14 @@
 	}
 
 	&__inner-block {
-		flex-basis: unquote('calc(min((var(--container-width) - (var(--container-offset))), (100vw - (var(--container-offset) * 2))) / 2)');
+		flex-basis: auto;
+		flex-basis: unquote('calc(min((var(--container-width) / 2) - var(--container-offset), (100vw / 2) - var(--container-offset)))');
 		display: flex;
 		align-items: center;
 	}
 
 	&__message-wrap {
-		max-width: 545px;
+		max-width: 528px;
 	}
 
 	&__message-wrap--right {
@@ -49,7 +50,7 @@
 		.container__external-block {
 			flex-direction: column;
 			align-items: center;
-			margin: 0 15px;
+			margin: 0 32px;
 			
 		}
 
@@ -90,14 +91,14 @@
 
 		&__message-wrap {
 			max-width: 100%;
-			padding: 15px;
+			padding: 0;
 		}
 
 		&__inner-block {
 			flex-basis: auto;
 			width: 100%;
 			max-width: 848px;
-			
+			margin-bottom: 56px;
 		}
 	
 

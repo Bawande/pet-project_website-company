@@ -44,8 +44,8 @@ modalProductCardValidation
 			rule: 'function',
 			validator: function () {
 
-				let telSelector = document.querySelector('.input-tel-mpo');
-				let phone = telSelector.inputmask.unmaskedvalue();
+				const telSelector = document.querySelector('.input-tel-mpo');
+				const phone = telSelector.inputmask.unmaskedvalue();
 				return phone.length === 10;
 			},
 			errorMessage: 'Введите корректный телефон',
@@ -53,46 +53,46 @@ modalProductCardValidation
 	])
 
 	.onSuccess((event) => {
-		// console.log('Validation passes and form submitted', event);
 
 		const formData = new FormData(event.target);
-		const acceptedForm = document.querySelector('.modal-product-order__accepted');
+		const messageWrapper = document.querySelector('.modal-product-order__message-status');
 
 		let out = `
-			<div class="form-accepted__accepted-img"></div>
+		<div class="message-status__img"></div>
 
-			<div class="form-accepted__accepted-title"> 
-				Ожидайте!
-			</div>
-			<p class="form-accepted__accepted-text text text__basis"> 
-				Ваша заявка обрабатывается.
-			</p>
+		<div class="message-status__title"> 
+			Ожидайте!
+		</div>
+		<p class="message-status__text text text__basis"> 
+			Ваша заявка обрабатывается.
+		</p>
 		`;
-		acceptedForm.innerHTML = out;
+
+		messageWrapper.innerHTML = out;
 
 		// добавляю класс формы отправленно 
 		// вывожу сообщение об отправке
-		acceptedForm?.classList.remove('hidden');
-		acceptedForm?.classList.add('load');
+		messageWrapper?.classList.remove('hidden');
+		messageWrapper?.classList.add('load');
 
 		setData('https://jsonplaceholder.typicode.com/posts', formData)
 			.then(() => {
 
-				acceptedForm?.classList.remove('load');
-				acceptedForm?.classList.add('accepted');
+				messageWrapper?.classList.remove('load');
+				messageWrapper?.classList.add('accepted');
 
 				out = `
-					<div class="form-accepted__accepted-img"></div>
+				<div class="message-status__img"></div>
 
-					<div class="form-accepted__accepted-title"> 
-						Спасибо!
-					</div>
-					<p class="form-accepted__accepted-text text text__basis"> 
-						Ваша заявка принята. В&nbsp;ближайшее время с&nbsp;вами свяжется наш менеджер.
-					</p>
+				<div class="message-status__title"> 
+					Спасибо!
+				</div>
+				<p class="message-status__text text text__basis"> 
+					Ваша заявка принята. В&nbsp;ближайшее время с&nbsp;вами свяжется наш менеджер.
+				</p>
 				`;
 
-				acceptedForm.innerHTML = out;
+				messageWrapper.innerHTML = out;
 				/**
 				 * пауза setTimeout
 				 * очищаю форму
@@ -109,37 +109,38 @@ modalProductCardValidation
 						MicroModal.close('id-modal-product-order');
 					}
 
-					acceptedForm?.classList.remove('accepted');
-					acceptedForm?.classList.add('hidden');
+					messageWrapper?.classList.remove('accepted');
+					messageWrapper?.classList.add('hidden');
 				}, 3000);
 			})
 			.catch((data) => {
-				acceptedForm?.classList.remove('load');
-				acceptedForm?.classList.add('error');
+				messageWrapper?.classList.remove('load');
+				messageWrapper?.classList.add('error');
 
 				out = `
-					<div class="form-accepted__accepted-img"></div>
+				<div class="message-status__img"></div>
 
-					<div class="form-accepted__accepted-title"> 
-						Произошла ошибка.
-					</div>
-					<p class="form-accepted__accepted-text text text__basis"> 
-						Попробуйте повторить запрос позже.
-					</p>
-				`;
+				<div class="message-status__title"> 
+					Произошла ошибка.
+				</div>
+				<p class="message-status__text text text__basis"> 
+					Попробуйте повторить запрос позже.
+				</p>
+			`;
 
-				acceptedForm.innerHTML = out;
+				messageWrapper.innerHTML = out;
 
 				/**
 				 * пауза setTimeout
 				 * удаляю сообщения об ошибке
 				 */
 				setTimeout(() => {
-					acceptedForm?.classList.add('hidden');
-					acceptedForm?.classList.remove('error');
+					messageWrapper?.classList.add('hidden');
+					messageWrapper?.classList.remove('error');
 				}, 3000);
 			})
-	});
 
+
+	});
 
 

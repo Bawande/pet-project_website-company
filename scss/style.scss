@@ -12,7 +12,7 @@
 	--ff-accent: "SourceSansPro-Gl", sans-serif;
 	//container seting
 	--container-width: 1312px;
-	--container-offset: 15px;
+	--container-offset: 32px;
 	--section-offset: 128px;
 	// --container-min: unquote('min(calc(var(--container-width) - (var(--container-offset)*2)), 100%)');
 
@@ -115,6 +115,24 @@
 		font-size: 24px;
 		line-height: 1.25;
 	}
+
+		// ---- media start ----
+	
+		@media screen and (max-width: 480px){
+	
+			&--h2, h2, h1{
+				font-size: 30px;
+				line-height: 1.25;
+			}
+		}
+	
+		@media screen and (max-width: 320px){
+	
+			&--h2, h2, h1{
+				font-size: 20px;
+				line-height: 1.25;
+			}
+		}
 }
 
 .text{
@@ -294,7 +312,7 @@
 
 	& textarea{
 		resize: none;
-		// resize: vertical;
+		height: 100%;
 		min-height: 106px;
 	}
 
@@ -330,7 +348,8 @@
 // ------------------------------------------------------------------
 
 
-.form-accepted {
+// .form-accepted {
+.message-status {
 
 	color: var(--clr-dark);
 	text-align: center;
@@ -347,58 +366,47 @@
 	transition: opacity 0.35s cubic-bezier(0.6, 0.05, 0.28, 0.91);
 	z-index: 16;
 
-
-	// &.hidden{
-	// 	opacity: 0;
-	// 	visibility: hidden;
-	// }
-
 	&.hidden{
 		opacity: 0;
 		visibility: hidden;
 	}
-
 	
 	@keyframes loading {
 		0% {
 			transform: rotate(0deg);
 		}
 		100% {
-			transform: rotate(-360deg);
+			transform: rotate(360deg);
 		}
 	}
 
-	&__accepted-img {
+	&__img {
 		display: block;
 		width: 60px;
 		height: 60px;
 		margin-bottom: 24px;
-		// background: #000;
-		// animation: loading 5s infinite normal;
 	}
 	
-	&.accepted &__accepted-img {
+	&.accepted &__img {
 		background: url(../img/modal-callback__accepted-accent.svg) 0 0/contain no-repeat;
 	}
 	
-	&.load &__accepted-img {
-	// &__accepted-img {
+	&.load &__img {
 		background: url(../img/modal-callback__accepted-loading.svg) 0 0/contain no-repeat;
-		// animation: loading infinite alternate;
+		animation: loading 5s infinite alternate;
 	}
 
-	&.error &__accepted-img {
+	&.error &__img {
 		background: url(../img/modal-callback__accepted-error.svg) 0 0/contain no-repeat;
 	}
-
 	
-	&__accepted-text,
-	&__accepted-title{
+	&__text,
+	&__title{
 		display: block;
 		max-width: 280px;
 	}
 	
-	&__accepted-title{
+	&__title{
 		font-family: var(--ff-accent);
 		font-size: 20px;
 		font-weight: 700;
@@ -414,8 +422,6 @@ body {
 	background-color: var(--clr-white);
 }
 // 
-
-
 
 
 
@@ -439,6 +445,18 @@ body {
 
 @import "s-brands";
 
+// --------------------------------------------------------------------
+
+@import "s-catalog-product";
+
+// --------------------------------------------------------------------
+
+@import "s-about-us";
+
+// --------------------------------------------------------------------
+
+@import "s-cooperation";
+
 //--------------------------------------------------------------------
 
 @import "s-news";
@@ -446,18 +464,6 @@ body {
 //--------------------------------------------------------------------
 
 @import "s-vacancies";
-
-//--------------------------------------------------------------------
-
-@import "s-catalog-product";
-
-//--------------------------------------------------------------------
-
-@import "s-about-us";
-
-//--------------------------------------------------------------------
-
-@import "s-cooperation";
 
 //--------------------------------------------------------------------
 
@@ -484,3 +490,4 @@ body {
 @import "mw-callback";
 
 //--------------------------------------------------------------------
+

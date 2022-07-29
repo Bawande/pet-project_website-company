@@ -1,15 +1,14 @@
 // -------------- секция подвал footer
 
 .bottom-nav {
-	
+	padding-top: 64px;
+	padding-bottom: 72px;
 	background: linear-gradient(90deg, #6DC1F4 0%, #3F9CD5 100%);
 
 	&__container {
 		display: flex;
 		justify-content: space-between;
-		
-		padding-top: 91px;
-		padding-bottom: 72px;
+
 		color: var(--clr-white);
 	}
 
@@ -32,8 +31,10 @@
 
 	@media screen and (max-width: 1024px){
 		
+		padding-bottom: 56px;
+		
 		&__container {
-		flex-wrap: wrap;
+			flex-wrap: wrap;
 		}
 
 		&__brand {
@@ -95,7 +96,7 @@
 	&__logo {
 		position: relative;
 		top: -30px;
-		// margin-bottom: 15px;
+		margin-bottom: 15px;
 	}
 
 	@media screen and (max-width: 1024px){
@@ -103,7 +104,7 @@
 		justify-content: space-between;
 		align-items: flex-end;
 		
-		margin-bottom: 80px;
+		margin-bottom: 60px;
 
 		&__logo {
 			top: 0;

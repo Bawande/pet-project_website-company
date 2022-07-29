@@ -1,6 +1,6 @@
 // -------------- секция карта
 .contacts {
-	padding-top: 128px;
+	padding-top: var(--section-offset);
 	position: relative;
 	
 	&__container {
@@ -11,6 +11,7 @@
 	}
 
 	&__title {
+		margin-top: 32px;
 		margin-bottom: 48px;
 	}
 
@@ -19,7 +20,7 @@
 		max-width: 528px;
 		position: absolute;
 		top: 0;
-		right: 15px;
+		right: 34px;
 		box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.05);
 		border-radius: 4px;
 		padding: 64px 84px;
@@ -27,7 +28,7 @@
 
 	&__big-phone {
 		font-size: 24px;
-		margin-bottom: 32px;
+		margin-bottom: 24px;
 	}
 
 	&__list {
@@ -36,6 +37,7 @@
 
 	&__item {
 		padding-left: 40px;
+		line-height: 1.5;
 	}
 
 	&__item:not(:last-child) {
@@ -82,7 +84,13 @@
 		background: center center no-repeat url(../img/s_map/download.svg);
 	}
 
-	@media screen and (max-width: 768px){
+	@media screen and (max-width: 1024px) {
+		&__content {
+			max-width: 496px;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
 		
 		&__title {
 			margin-bottom: 415px;
@@ -94,13 +102,13 @@
 			top: 114px;
 		}
 	}
-	@media screen and (max-width: 480px){
+	@media screen and (max-width: 480px) {
 		
 		&__content {
 			padding: 64px 48px;
 		}
 	}
-	@media screen and (max-width: 480px){
+	@media screen and (max-width: 480px) {
 		
 		&__content {
 			padding: 32px 24px;

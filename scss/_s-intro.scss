@@ -2,7 +2,7 @@
 
 .intro__container{
 	position: relative;
-	margin-bottom: var(--section-offset);
+	// margin-bottom: var(--section-offset);
 
 	// ---- media start ----
 
@@ -63,7 +63,7 @@
 .nav-swiper {
 
 	width: 550px;
-	height: 600px;
+	height: 606px;
 	background-color: var(--clr-white);
 	border-radius: 4px;
 	box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.05);
@@ -74,7 +74,7 @@
 	position: absolute !important;
 	top: 50%;
 	transform: translateY(-50%);
-	left: unquote('calc((max(var(--container-offset), calc((100% - var(--container-width)) / 2) + var(--container-offset))) + 15px)');
+	left: unquote('calc((max(var(--container-offset), calc((100% - var(--container-width)) / 2) )))');
 	z-index: 5;
 
 	-webkit-user-select: none;
@@ -114,7 +114,7 @@
 	@media screen and (max-width: 1024px){
 		
 		width: auto;
-		height: 392px;
+		height: 342px;
 		transform: translateY(0);
 		top: auto;
 		bottom: 0;

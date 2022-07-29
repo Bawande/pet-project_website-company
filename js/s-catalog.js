@@ -1,7 +1,7 @@
-import pruductDBJSON from "./_catalog_objects.mjs"
-import loadInitialCards from "./_catalog_load-cards.mjs"
-import loadInitialFilters from "./_catalog_load-filter.mjs"
-import filtersDropDownMenu from "./_catalog_drop-menu.mjs"
+import pruductDBJSON from "../js/_catalog_objects.mjs"
+import loadInitialCards from "../js/_catalog_load-cards.mjs"
+import loadInitialFilters from "../js/_catalog_load-filter.mjs"
+import filtersDropDownMenu from "../js/_catalog_drop-menu.mjs"
 
 localStorage.setItem("product", JSON.stringify(pruductDBJSON));
 

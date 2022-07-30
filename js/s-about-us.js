@@ -10,21 +10,21 @@ let aboutUsSwiper = new Swiper(aboutUsSwiperSelector, {
 		nextEl: '.about-us__btn-nxt',
 	},
 
-	// scrollbar: {
-	// 	el: '.advantages__scrollbar',
-	// 	draggable: true,
-	// },
+	scrollbar: {
+		el: '.about-us__scrollbar',
+		draggable: true,
+	},
 
-	// pagination: {
-	// 	el: '.advantages__pagination',
-	// 	// type: 'fraction',
-	// 	type: 'custom',
-	// 	renderCustom: function (sp, cr, tt) {
-	// 		let indT = tt >= 10 ? cr : `0${tt}`
-	// 		let indC = cr >= 10 ? cr : `0${cr}`
-	// 		return `<span>${indC}</span><span">/${indT}</spanss=>`
-	// 	}
-	// },
+	pagination: {
+		el: '.about-us__pagination',
+		// type: 'fraction',
+		type: 'custom',
+		renderCustom: function (sp, cr, tt) {
+			let indT = tt >= 10 ? cr : `0${tt}`
+			let indC = cr >= 10 ? cr : `0${cr}`
+			return `<span>${indC}</span><span>/${indT}</span>`
+		}
+	},
 
 	breakpoints: {
 		// when window width is >= 320px

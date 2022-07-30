@@ -29,7 +29,7 @@
 
 	// ---- media start ----
 
-	@media screen and (max-width: 1024px){
+	@media screen and (max-width: 1080px){
 		
 		padding-bottom: 56px;
 		
@@ -81,6 +81,11 @@
 		&__output {
 			flex-basis: 100%;
 		}
+
+		&__menu {
+			margin-bottom: 46px;
+		}
+
 	}
 
 	@media screen and (max-width: 320px){
@@ -99,7 +104,7 @@
 		margin-bottom: 15px;
 	}
 
-	@media screen and (max-width: 1024px){
+	@media screen and (max-width: 1080px){
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-end;
@@ -141,8 +146,9 @@
 	@media screen and (max-width: 650px){
 		
 		justify-content: center;
+		margin-bottom: 35px;
 		
-		margin-bottom: 56px;
+		// margin-bottom: 56px;
 		
 		&__logo {
 			width: 320px;

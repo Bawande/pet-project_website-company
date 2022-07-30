@@ -55,9 +55,17 @@
 	}
 
 	@media (max-width: 768px){
+
+		&__content-wrap {
+			flex-basis: auto;
+			width: 100%;
+			max-width: none;
+		}
+
 		&__container {
 			display: block;
 		}
+
 		&__img-wrap {
 			margin-right: 0;
 			min-height: auto;
@@ -84,7 +92,8 @@
 	}
 
 	@media (max-width: 320px){
-		
+		padding-top: 24px;
+
 		&__img-wrap {
 			max-height: 180px;
 			margin-bottom: 32px;
@@ -92,6 +101,10 @@
 
 		&__img-wrap img {
 			max-height: 180px;
+		}
+
+		&__title {
+			margin-bottom: 26px;
 		}
 	}
 

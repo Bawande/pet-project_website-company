@@ -1,12 +1,12 @@
 
-import pruductDBJSON from "https://bawande.github.io/pet-project_website-company/js/mod-catalog_objects.mjs"
-import loadInitialCards from "https://bawande.github.io/pet-project_website-company/js/mod-catalog_load-cards.mjs"
-import loadInitialFilters from "https://bawande.github.io/pet-project_website-company/js/mod-catalog_load-filter.mjs"
-import filtersDropDownMenu from "https://bawande.github.io/pet-project_website-company/js/mod-catalog_drop-menu.mjs"
-// import pruductDBJSON from "../js/_catalog_objects.js"
-// import loadInitialCards from "../js/_catalog_load-cards.js"
-// import loadInitialFilters from "../js/_catalog_load-filter.js"
-// import filtersDropDownMenu from "../js/_catalog_drop-menu.js"
+// import pruductDBJSON from "https://bawande.github.io/pet-project_website-company/js/mod-catalog_objects.mjs"
+// import loadInitialCards from "https://bawande.github.io/pet-project_website-company/js/mod-catalog_load-cards.mjs"
+// import loadInitialFilters from "https://bawande.github.io/pet-project_website-company/js/mod-catalog_load-filter.mjs"
+// import filtersDropDownMenu from "https://bawande.github.io/pet-project_website-company/js/mod-catalog_drop-menu.mjs"
+import pruductDBJSON from "./mod-catalog_objects.mjs"
+import loadInitialCards from "./mod-catalog_load-cards.mjs"
+import loadInitialFilters from "./mod-catalog_load-filter.mjs"
+import filtersDropDownMenu from "./mod-catalog_drop-menu.mjs"
 
 
 localStorage.setItem("product", JSON.stringify(pruductDBJSON));

@@ -13,12 +13,37 @@
 	//container seting
 	--container-width: 1312px;
 	--container-offset: 32px;
+	--h2-padding: 32px;
 	--section-offset: 128px;
 	// --container-min: unquote('min(calc(var(--container-width) - (var(--container-offset)*2)), 100%)');
 
 	--tr-transformAll: all 0.35s cubic-bezier(0.6, 0.05, 0.28, 0.91);
 	--tr-transform: 0.35s cubic-bezier(0.6, 0.05, 0.28, 0.91);
+	
+	// ---- media start ----
+
+	@media screen and (max-width: 1024px){
+
+	
+	}
+
+	@media screen and (max-width: 768px){
+		--section-offset: 96px;
+		--container-offset: 24px;
+	}
+
+	@media screen and (max-width: 480px){
+		--container-offset: 16px;
+		--h2-padding: 26px;
+	}
+
+	@media screen and (max-width: 320px){
+		// --section-offset: 64px;
+		--h2-padding: 22px;
+	}
 }
+
+
 
 // ------------------------------------------------------------------
 @import "normalize";
@@ -122,7 +147,10 @@
 	
 			&--h2, h2, h1{
 				font-size: 30px;
-				line-height: 1.25;
+			}
+
+			&--h3, h3{
+				font-size: 16px;
 			}
 		}
 	
@@ -130,7 +158,6 @@
 	
 			&--h2, h2, h1{
 				font-size: 20px;
-				line-height: 1.25;
 			}
 		}
 }
@@ -144,6 +171,7 @@
 		font-size: 16px;
 		line-height: 1.65;	
 	}
+
 	&__note{
 		font-size: 12px;
 		line-height: 1.35;
@@ -174,13 +202,38 @@
 
 	& p:not(:last-child) {
 		margin-bottom: 16px;
+	}
+
+	@media screen and (max-width: 1024px){
+
+	
+	}
+
+	@media screen and (max-width: 768px){
+
+	
+	}
+
+	@media screen and (max-width: 480px){
+
+	
+	}
+
+	@media screen and (max-width: 320px){
+
+		&__basis{
+			font-size: 14px;
+			line-height: 1.65;	
 		}
+	
+	}
+		
 }
 
 .btn-open-menu,
 .btn-close-menu{
 	width: 56px;
-	height: 56px;	
+	height: 56px;
 	padding: 21px 18px;
 	background-color: var(--clr-white);
 	border-radius: 4px;
@@ -201,6 +254,19 @@
 		&:hover span:nth-child(2){
 			width: 100%;
 		}
+	}
+	// ---- media start ----
+
+	@media screen and (max-width: 480px) {
+		width: 48px;
+		height: 48px;
+		padding: 17px 14px;
+	
+	}
+
+	@media screen and (max-width: 320px) {
+
+	
 	}
 }
 

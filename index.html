@@ -5,10 +5,11 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="./icon.svg">
 	<link rel="stylesheet" href="./libs/swiper-bundle.min.css">
 	<link rel="stylesheet" href="./libs/micromodal/micromodal.css">
 	<link rel="stylesheet" href="./css/style.css">
-	<title>Document</title>
+	<title>Glomaco company</title>
 </head>
 
 <body>
@@ -126,7 +127,15 @@
 					<!-- Additional required wrapper -->
 					<div class="swiper-wrapper bgr-swiper__wrap">
 						<!-- Slides -->
-						<div class="swiper-slide bgr-swiper__slide"> <img src="./img/header-slider_img-01.jpg" alt="">
+						<div class="swiper-slide bgr-swiper__slide">
+							<picture>
+								<source srcset="./img/s_intro/intro-slide_1024.jpg" media="(max-width: 1024px)" alt="">
+								<source srcset="./img/s_intro/intro-slide_768.jpg" media="(max-width: 768px)" alt="">
+								<source srcset="./img/s_intro/intro-slide_480.jpg" media="(max-width: 480px)" alt="">
+								<source srcset="./img/s_intro/intro-slide_320.jpg" media="(max-width: 320px)" alt="">
+
+								<img src="./img/s_intro/intro-slide_1920.jpg" alt="">
+							</picture>
 						</div>
 						<!-- Slides -->
 						<div class="swiper-slide bgr-swiper__slide"> <img src="./img/header-slider_img-02.jpg" alt="">
@@ -225,10 +234,9 @@
 					<div class="company__logo">
 						<span>Входит в</span>
 						<picture>
-							<source media="(max-width: 768px)" srcset="
-							./img/s_company/logo-Proteco_horizontal.svg 768w,
-								" />
-							<img src="./img/s_company/logo-Proteco_vertical.svg" alt="bears" />
+							<source media="(max-width: 768px)" srcset="./img/s_company/logo-Proteco_horizontal.svg"
+								alt="">
+							<img src="./img/s_company/logo-Proteco_vertical.svg" alt="">
 						</picture>
 
 					</div>
@@ -516,8 +524,17 @@
 
 				<div class="about-us__navigation">
 
-					<div class="about-us__pagination-wrapper">
-						/...
+					<div class="about-us__nav-bar small-nav-bar">
+
+						<!-- If we need scrollbar -->
+						<div class="about-us__scroll-wrap small-nav-bar__scroll-wrap">
+							<div class="swiper-scrollbar about-us__scrollbar small-nav-bar__scroll-bar">
+							</div>
+						</div>
+						<!-- If we need pagination -->
+						<div class="swiper-pagination about-us__pagination small-nav-bar__pagination">
+						</div>
+
 					</div>
 					<!--  -->
 					<div class="about-us__btn-wrapper">
@@ -526,6 +543,8 @@
 						<div class="swiper-button-next about-us__btn-nxt"></div>
 					</div>
 				</div>
+
+				<!--  -->
 				<div class="swiper-wrapper">
 
 					<div class="swiper-slide">
@@ -694,7 +713,7 @@
 								данных
 							</p>
 							<button type="submit" class="cooperation__button btn">
-								Связаться с нами
+								Оставить заявку
 							</button>
 						</div>
 
@@ -885,6 +904,8 @@
 							и навыки. Мы постоянно инвестируем в развитие человеческого потенциала, как одного
 							из главных
 							конкурентных преимуществ в современном мире.
+						</p>
+						<p>
 							Присоединяйтесь к дружному коллективу ГЛОМАКО!
 						</p>
 					</div>
@@ -944,7 +965,7 @@
 			<div class="map__container">
 				<iframe
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d713.2875873463394!2d30.535995875497637!3d59.62498489144787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46bd8b287418cb99%3A0xe77d2f37dae2b368!2z0J7QntCeICLQk9Cb0J7QnNCQ0JrQniI!5e0!3m2!1sru!2sru!4v1658021850884!5m2!1sru!2sru"
-					width="100%" height="434" style="border:0;" allowfullscreen="" loading="lazy"
+					width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
 					referrerpolicy="no-referrer-when-downgrade">
 				</iframe>
 			</div>

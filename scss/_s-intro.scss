@@ -106,7 +106,7 @@
 	}
 	
 	&__content-wrap h2{
-		margin-bottom: 32px;
+		margin-bottom: var(--h2-padding);
 	}
 
 		// ---- media start ----
@@ -126,21 +126,41 @@
 	@media screen and (max-width: 768px){
 		left: 24px;
 		right: 24px;
+
+		&__content-wrap{
+			padding: 56px 56px 5px;
+		}
+	
+		&__content-wrap h2{
+			margin-bottom: var(--h2-padding);
+		}
 	
 	}
 
 	@media screen and (max-width: 480px){
 		left: 16px;
 		right: 16px;
+		height: 340px;
+		
 		&__content-wrap{
 			padding: 48px 24px 5px;
+		}
+		
+		&__nav-wrap {
+			padding: 34px 24px;
 		}
 	
 	}
 
 	@media screen and (max-width: 320px){
-
+		height: 322px;
 	
+		&__content-wrap{
+			padding: 32px 20px 5px;
+		}
+		&__nav-wrap {
+			padding: 10px 20px 20px;
+		}
 	}
 }
 

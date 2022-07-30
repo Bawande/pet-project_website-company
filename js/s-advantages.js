@@ -8,6 +8,7 @@ let advanSwiper = new Swiper(advantagesSwiper, {
 	// autoHeight: false,
 
 
+
 	navigation: {
 		prevEl: '.advantages__btn-prv',
 		nextEl: '.advantages__btn-nxt',
@@ -31,16 +32,16 @@ let advanSwiper = new Swiper(advantagesSwiper, {
 
 	breakpoints: {
 		// when window width is >= 320px
-		321: {
+		0: {
 			slidesPerView: 1,
-			spaceBetween: 16,
+			spaceBetween: 32,
 
 			grid: {
 				rows: 1,
-			}
+			},
 		},
 		// when window width is >= 576px
-		576: {
+		620: {
 			slidesPerView: 2,
 			// spaceBetween: 0,
 

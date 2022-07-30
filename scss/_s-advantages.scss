@@ -111,16 +111,14 @@
 		&__messange {
 			max-height: 162px;
 		}
-
-
 	}
 
 	@media (max-width: 576px){
-
+		
 		&__swiper {
-			height: 360px;
+			height: 100%;
 		}
-
+		
 		&__messange {
 			max-height: 130px;
 		}
@@ -128,10 +126,38 @@
 		&__btn-wrapper {
 			margin-top: 24px;
 			height: 40px;
-			padding: 0 16px;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 		}
+
+		&__content-wrap {
+			height: 346px;
+			// min-height: 342px;
+		}
 	}
+
+	@media (max-width: 480px){
+		
+		&__title {
+			margin-bottom: 40px;
+		}
+	}
+
+	@media (max-width: 320px){
+		
+		// &__swiper {
+		// 	height: 400px;
+		// }
+
+		&__item {
+			padding: 40px 16px;
+		}
+
+		&__content-wrap {
+			padding: 0;
+		}
+
+	}
+
 }

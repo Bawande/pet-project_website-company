@@ -16,13 +16,44 @@
 
 	// &__content-wrapper {
 	// }
+
+	// ---- media start ----
+
+	@media screen and (max-width: 1024px){
+
+	
+	}
+
+	@media screen and (max-width: 768px){
+
+	
+	}
+
+	@media screen and (max-width: 480px){
+		
+		&__header {
+			padding-bottom: 38px;
+		}
+	
+	}
+
+	@media screen and (max-width: 320px){
+		padding-top: 46px;
+		
+		&__header {
+			padding-bottom: 24px;
+		}
+
+		&__header .ns-sp-btn-wrapper {
+			display: none;
+		}
+	}
 }
 
 .card-news {
 
 	&__img {
 		width: 100%;
-		height: 100%;
 		height: 237px;
 		background-color: var(--clr-smalt--light);
 		border-radius: 4px;
@@ -88,10 +119,18 @@
 		left: 0;
 		z-index: 10;
 	}
-
+	
 	&__title {
 		margin-bottom: 12px;
 	}
+
+	@media screen and (max-width: 320px){
+		&__img {
+			height: 148px;
+		}
+	
+	}
+	
 
 }
 

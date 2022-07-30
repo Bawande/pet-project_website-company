@@ -18,7 +18,7 @@ let fourthSwiper = new Swiper(newsSwiper, {
 			spaceBetween: 16,
 		},
 		768: {
-			slidesPerView: 1.6,
+			slidesPerView: 1.7,
 			spaceBetween: 32,
 		},
 		// when window width is >= 1024px

@@ -66,6 +66,19 @@
 	&__pagination span:last-child{
 		font-size: 12px;
 	}
+
+	@media screen and (max-width: 320px){
+		width: 134px;
+		
+		&__scroll-wrap{
+			width: 100px;
+		}
+
+		&__pagination {
+			width: 134px;
+		}
+	
+	}
 }
 
 

@@ -4,7 +4,7 @@
 
 	position: relative;
 	width: 804px;
-	background-color: var(--clr-accent) !important;
+	background: var(--clr-accent--linear) !important;
 	border-radius: 4px;
 	overflow: hidden;
 
@@ -57,6 +57,62 @@
 
 		&__button {
 			width: 100%;
+		}
+
+		// ---- media start ----
+
+		@media screen and (max-width: 800px){
+			display: block;
+			width: 100%;
+			max-width: 472px;
+
+			&__topic-wrap {
+				display: block;
+			}
+
+			&__topic-wrap img{
+				display: none;
+			}
+
+			&__form {
+				flex-basis: auto;
+				padding: 56px 64px;
+			}
+
+
+		
+		}
+
+		@media screen and (max-width: 480px){
+
+			max-width: 380px;
+
+			&__form {
+				padding: 36px 44px;
+			}
+		
+		}
+
+		@media screen and (max-width: 390px){
+
+			max-width: 318px;
+			
+			&__form {
+				padding: 26px 34px;
+			}
+
+			&__topic-wrap {
+				padding: 56px 16px 32px;
+			}
+		}
+
+		@media screen and (max-width: 320px){
+
+			max-width: 288px;
+			
+			&__form {
+				padding: 16px 24px;
+			}
 		}
 		
 }

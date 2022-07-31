@@ -4,6 +4,7 @@
 	--clr-haze: #f7f9fa;
 	--clr-accent: #009fe3;
 	--clr-accent--light: #a1daf8;
+	--clr-accent--linear: linear-gradient(90deg, #3F9CD5 0%, #6DC1F4 100%);;
 	--clr-accent--dark: #0087c2;
 	--clr-dark: #0c131d;
 	--clr-smalt--light: #557d8e;
@@ -53,7 +54,7 @@
 @import "swiper";
 
 
-@import "../libs/sidebar";
+@import "sidebar";
 
 // ------------------------------------------------------------------
 * {

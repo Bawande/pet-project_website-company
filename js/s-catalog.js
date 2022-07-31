@@ -78,10 +78,12 @@ function openOrderCard() {
 	document.querySelector('.catalog-product__cards-list')
 		.addEventListener('click', (event) => {
 			if (event.target.closest('[data-product-card-article]')) {
+
 				const idCardValue = event.target.closest('[data-product-card-article]').dataset.productCardArticle;
 
 				// получение данных 
 				let objectCard;
+
 				cards.forEach((card) => {
 					if (card['id'] === idCardValue) {
 						objectCard = JSON.parse(JSON.stringify(card));
@@ -122,40 +124,53 @@ function openOrderCard() {
 					swiperBigImgOut += `
 					<!-- Slide -->
 					<div class="mpc__lrg-img-swp-sld swiper-slide">
-						<div class="mpc__lrg-img-sld-wrap">
-							<img src="./catalog/${idCardValue}/${img}" alt="">
-						</div>
+					<div class="mpc__lrg-img-sld-wrap">
+					<img src="./catalog/${idCardValue}/${img}" alt="">
+					</div>
 					</div>
 					`;
 				})
+
 
 				images.forEach(img => {
 					swiperSmallImgOut += `
 					<!-- Slide -->
 					<div class="mpc__sml-img-swp-sld swiper-slide">
-						<div class="mpc__sml-img-sld-wrap">
-							<img src="./catalog/${idCardValue}/${img}" alt="">
-						</div>
+					<div class="mpc__sml-img-sld-wrap">
+					<img src="./catalog/${idCardValue}/${img}" alt="">
+					</div>
 					</div>
 					`;
 				})
 
-
-				// вывод данных 
-				modalTitle.innerText = name;
-				modalDescription.innerHTML = contentOut;
-				modalImgSwiper.innerHTML = swiperBigImgOut;
-				modalImgSwiperSmall.innerHTML = swiperSmallImgOut;
+				// console.log(swiperBigImgOut)
+				console.log(swiperSmallImgOut)
 				// modalDescription.insertAdjacentHTML('beforeend', contentOut);
 
 
 				// запускаем модальное окно
 				MicroModal.show('id-modal-product-card', {
-					// onShow: modal => console.info(`${modal.id} is shown`), // [1]
+
+					onShow: modal => {
+						// вывод данных 
+						modalTitle.innerText = name;
+						modalDescription.innerHTML = contentOut;
+						modalImgSwiper.innerHTML = swiperBigImgOut;
+						modalImgSwiperSmall.innerHTML = swiperSmallImgOut;
+					}, // [1]
+
 					onClose: (modal) => {
+
+						// очистка данных
+						modalTitle.innerText = '';
+						modalDescription.innerHTML = '';
+						modalImgSwiper.innerHTML = '';
+						modalImgSwiperSmall.innerHTML = '';
+
 						// удалим карточку товара в localstorage
 						localStorage.removeItem("cardOrder");
 					},
+
 					openTrigger: 'data-custom-open',
 					closeTrigger: 'data-custom-close',
 					openClass: 'is-open',
@@ -196,20 +211,26 @@ function openProductOrder() {
 					<input type="text" name="product-id" value="${id}" hidden>
 					<input type="text" name="product-name" value="${name}" hidden>
 				`;
-				// вывод данных
-				orderTitle.innerText = name;
-				orderDescription.innerHTML = out;
+
 				// открытие модального окна формления заказа
 				MicroModal.show('id-modal-product-order', {
-					// onShow: modal => console.info(`${modal.id} is shown`), // [1]
-					// onClose: modal => console.info(`${modal.id} is hidden`), // [2]
+					onShow: (modal) => {
+						// вывод данных
+						orderTitle.innerText = name;
+						orderDescription.innerHTML = out;
+					}, // [1]
+					onClose: (modal) => {
+						orderTitle.innerText = '';
+						orderDescription.innerHTML = '';
+					}, // [2]
+
 					openTrigger: 'data-custom-open',
 					closeTrigger: 'data-custom-close',
 					openClass: 'is-open',
 					disableScroll: true,
 					disableFocus: true,
 				});
-				console.log(orderName)
+				// console.log(orderName)
 			}
 		})
 
@@ -293,173 +314,6 @@ function getValueActiveFilter() {
 		})
 	return arrayResult;
 }
-
-// /**
-//  * 
-//  * @param {*} filter 
-//  * @param {*} key 
-//  * @param {*} array 
-//  * @returns 
-//  */
-// function filteringArrayCards(filter, key, array) {
-
-// 	const resultArray = array.filter((el) => {
-
-// 		if (Array.isArray(el[key])) {
-// 			return el[key].indexOf(filter) !== -1 ? true : false;
-// 		}
-// 	})
-
-// 	return resultArray;
-// }
-
-
-
-
-// каталог
-// карточки товара 
-
-// console.log(cardsCatalog)
-// каталог - фильтры
-/*
-const cardsCatalog = document.querySelectorAll("[data-product-card-article]");
-// каталог - открытие подробной карточки товара
-	
-cardsCatalog.forEach(el => {
-	
-	el.addEventListener('click', () => {
-	
-		// console.log(el.setAttribute("data-product-card-article"));
-	
-		// передаем артикл
-		const articleCard = document.querySelector('#product-modal-article');
-		if (articleCard) {
-			articleCard.innerHTML = el.getAttribute('data-product-card-article');
-			articleCard.setAttribute('data-product-modal-article',
-				el.getAttribute('data-product-card-article')
-			);
-		}
-		// запускаем модальное окно
-		MicroModal.show('id-modal-product-card', {
-			// onShow: modal => console.info(`${modal.id} is shown`), // [1]
-			// onClose: modal => console.info(`${modal.id} is hidden`), // [2]
-			openTrigger: 'data-custom-open',
-			closeTrigger: 'data-custom-close',
-			openClass: 'is-open',
-			disableScroll: true,
-			disableFocus: true,
-		});
-	})
-});
-	
-// каталог - открытие формы заказа товара
-	
-// кнопка заказа товара
-const productOrderBtn = document.querySelector('[data-product-order-btn]');
-	
-productOrderBtn.addEventListener('click', function () {
-	
-	// получим значения артикля в карточке товара
-	const articleCard = document.querySelector("#product-modal-article");
-	// закроем модальное окно карточки товара
-	let mcrMdlWin = document.querySelector('#id-modal-product-card');
-	if (mcrMdlWin?.classList.contains('is-open')) {
-		// console.log('Close');
-		MicroModal.close('id-modal-product-card');
-	}
-	// заполним поле артикля
-	const productArticle = document.querySelector("#product-article");
-	if (productArticle) {
-		productArticle.setAttribute('value',
-			articleCard.getAttribute('data-product-modal-article')
-		);
-	}
-	// откроем модальное окно формления заказа
-	MicroModal.show('id-modal-product-order', {
-		// onShow: modal => console.info(`${modal.id} is shown`), // [1]
-		// onClose: modal => console.info(`${modal.id} is hidden`), // [2]
-		openTrigger: 'data-custom-open',
-		closeTrigger: 'data-custom-close',
-		openClass: 'is-open',
-		disableScroll: true,
-		disableFocus: true,
-	});
-	
-	
-	// console.log(articleCard.getAttribute('data-product-modal-article'));
-	
-	
-});
-	
-	
-// каталог - загрузить еще
-	
-// колличество элементов массива cardsCatalog
-const countCardsCatalog = Object.keys(cardsCatalog).length;
-// console.log("Всего элементов в массиве =", countElementsCard);
-	
-// сколько показывать при загрузке
-const startViewCard = 12;
-// сколько добавить при нажатии кнопки
-const moreViewCard = 3;
-	
-// скроем все карточки
-hideCards(countCardsCatalog);
-// покажем стартовые карточки startViewCard
-showCards(startViewCard);
-	
-	
-loadMoreButton.addEventListener('click', function () {
-	
-	// найдем все скрытые карточки
-	const hiddenCard = document.querySelectorAll(".hidden");
-	
-	setTimeout(() => {
-	
-		let i = 0;
-		hiddenCard.forEach(el => {
-			if (i < moreViewCard) {
-				el.classList.remove('hidden')
-			}
-			i++;
-		})
-	
-		let card = document.querySelectorAll(".hidden");
-		if (!card.length) {
-			loadMoreButton.classList.add('hidden')
-		};
-		// console.log(i);
-	
-	}, 200);
-});
-	
-// функция скрытия карточки
-function hideCards(count) {
-	let i = 0;
-	cardsCatalog.forEach(el => {
-	
-		if (i < count) {
-			el.classList.add('hidden')
-		}
-		i++;
-	})
-};
-	
-// функция показа карточки
-function showCards(count) {
-	let i = 0;
-	cardsCatalog.forEach(el => {
-	
-		if (i < count) {
-			el.classList.remove('hidden')
-		}
-		i++;
-	})
-};
-*/
-
-
-
 
 /**
  * определение типа селекторов фильтра в зависимосимости от размера экрана (мобильный/компьтер)

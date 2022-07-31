@@ -1,28 +1,4 @@
-// слайдер модального окна карточка товара маленький
-// слайдер модального окна карточка товара большой
-const smallProductSwiper = document.querySelector('.mpc__sml-img-swp');
-const largeProductSwiper = document.querySelector('.mpc__lrg-img-swp');
 
-let secondModalSwiper = new Swiper(smallProductSwiper, {
-
-	slidesPerView: 5,
-	spaceBetween: 8,
-});
-
-
-let firstModalSwiper = new Swiper(largeProductSwiper, {
-
-	slidesPerView: 1,
-	spaceBetween: 0,
-	grabCursor: true,
-
-	// effect: 'fade',
-
-	thumbs: {
-		swiper: secondModalSwiper,
-	},
-
-});
 
 
 // контроль/группировка слайдеров

@@ -93,7 +93,7 @@
 		
 	}
 
-	@media screen and (max-width: 400px){
+	@media screen and (max-width: 475px){
 
 		&__cards-list {
 			grid-template-columns: repeat(1, 1fr);
@@ -280,15 +280,15 @@
 		&__img-wrap {
 			padding: 40px 26px;
 		}
-		
-		// &__img-container img {
-		// 	object-fit: cover;
-		// }
 	}
-
+	
 	@media screen and (max-width: 480px){
-
+		
 		box-shadow: none;
+		
+		&__img-container img {
+			object-fit: contain;
+		}
 
 		&__img-container{
 			height: 216px;

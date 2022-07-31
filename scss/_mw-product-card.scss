@@ -1,7 +1,8 @@
 // --------------  модальное окно "Карточка товара"
 .modal-product-card {
+	box-sizing: border-box;
+	width: 100%;
 	max-width: 1312px;
-	// max-height: 95vh;
 	background-color: var(--clr-white);
 	position: relative;
 	padding: 72px 112px 64px;
@@ -18,8 +19,8 @@
 		}
 
 		&__images-wrapper {
-			flex-basis: 45%;
-			max-width: 45%;
+			flex-basis: 511px;
+			max-width: 511px;
 		}
 
 		&__large-images {
@@ -30,8 +31,8 @@
 		}
 
 		&__description-wrapper {
-			flex-basis: 45%;
-			max-width: 45%;
+			flex-basis: 529px;
+			max-width: 529px;
 		}
 
 		&__product-article {
@@ -50,6 +51,7 @@
 		&__order-btn {
 			margin-bottom: 32px;
 		}
+
 		&__order-btn {
 			padding: 16px 73px;
 		}
@@ -87,55 +89,113 @@
 			font-weight: 700;
 			margin-right: 6px;
 		}
+
+		@media screen and (max-width: 1320px){
+			
+			max-width: 960px;
+			padding: 80px 40px 64px;
+
+			&__images-wrapper {
+				max-width: 423px;
+			}
+
+			&__description-wrapper {
+				max-width: 425px;
+			}
+		
+		}
+	
+		@media screen and (max-width: 960px){
+			
+			max-width: none;
+			padding: 80px 24px 64px;
+
+			&__images-wrapper {
+				max-width: 48%;
+			}
+
+			&__description-wrapper {
+				max-width: 48%;
+			}
+		
+		}
+	
+		@media screen and (max-width: 480px){
+			
+			display: block;
+			padding: 80px 16px 64px;
+
+			&__images-wrapper {
+				max-width: none;
+				margin-bottom: 48px;
+			}
+
+			&__description-wrapper {
+				max-width: none;
+			}
+		
+		}
+	
+		@media screen and (max-width: 320px){
+	
+			&__order-btn {
+					width: 100%;
+				}
+		
+		}
+}
+
+
+@media screen and (max-width: 960px){
+			
+	#id-modal-product-card>.mcrmdl-overlay {
+		padding: 0;
+	}
 }
 
 .mpc {
 
-	&__lrg-img-swp {
-		max-width: 100%;
-		max-height: 436px;
-	}
-
-	&__lrg-img-swp-sld {
+	&__lrg-img-sld-wrap {
 		width: 100%;
-		height: 100%;
-		// background: var(--clr-accent--light);
+		height: 436px;
 	}
 
 	&__lrg-img-sld-wrap img {
 			display: block;
-			width: auto;
-			max-height: 436px;
-			margin: 0 auto;
+			width: 100%;
+			height: 100%;
 			object-fit: contain;
 			object-position: center center;
 			
 		}
+
 	// ------------------------------------------------
-	&__sml-img-swp {
-		max-width: 100%;
-		max-height: 72px;
-	}
-
-	&__sml-img-swp-wrp {
+	
+	&__sml-img-sld-wrap{
 		width: 100%;
-		height: 100%;
+		height: 72px;
 	}
 
-	&__sml-img-swp-sld {
-		width: 100%;
-		height: 100%;
-		// background: var(--clr-accent--light);
-	}
-
-	&__sml-img-sld-wrap img{
-		
+	&__sml-img-sld-wrap img {
 		display: block;
-		width: auto;
-		max-height: 60px;
-		margin: 0 auto;
+		width: 100%;
+		height: 100%;
 		object-fit: contain;
 		object-position: center center;
 	}
+
+	@media screen and (max-width: 320px){
+
+		&__lrg-img-sld-wrap {
+			height: 231px;
+		}
+
+		&__sml-img-sld-wrap img,
+		&__lrg-img-sld-wrap img {
+			object-fit: scale-down;
+		}
+	
+	}
+	
 
 }

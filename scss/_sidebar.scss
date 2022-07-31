@@ -4,7 +4,7 @@
 	--sb-clr-lineToggler: #343838;
 
 	// --sb-sizeTogler: 34px;
-	--sb-widthMenu: 300px;
+	--sb-widthMenu: 725px;
 }
 
 .sb-stop-scroll{
@@ -40,6 +40,7 @@
 	z-index: 100;
 	transition: all 0.25s cubic-bezier(0.6, 0.05, 0.28, 0.91);
 }
+
 .sb-tg-mn span{
 	display: inline-block;
 	width: 100%;
@@ -48,15 +49,19 @@
 	background-color: var(--sb-clr-lineToggler);
 	transition: all 0.5s cubic-bezier(0.6, 0.05, 0.28, 0.91);
 }
+
 .sb-tg-mn span:nth-child(2){
 	width: 70%;
 }
+
 .sb-tg-mn.active span:nth-child(2){
 	transform: scale(0);
 }
+
 .sb-tg-mn.active span:nth-child(1) {
 	transform: translateY(6px) rotate(-135deg);
 }
+
 .sb-tg-mn.active span:nth-child(3) {
 	transform: translateY(-6px) rotate(-45deg);
 }
@@ -78,6 +83,7 @@
 	z-index: 100;
 	transition: all 0.25s cubic-bezier(0.6, 0.05, 0.28, 0.91);
 }
+
 .sb-opn-mn span{
 	display: inline-block;
 	width: 100%;
@@ -86,6 +92,7 @@
 	background-color: var(--sb-clr-lineToggler);
 	transition: all 0.5s cubic-bezier(0.6, 0.05, 0.28, 0.91);
 }
+
 .sb-opn-mn span:nth-child(2){
 	width: 70%;
 }
@@ -107,6 +114,7 @@
 	z-index: 100;
 	transition: all 0.25s cubic-bezier(0.6, 0.05, 0.28, 0.91);
 }
+
 .sb-cls-mn span{
 	display: inline-block;
 	width: 100%;
@@ -118,6 +126,7 @@
 .sb-cls-mn span:first-child {
 	transform: translateY(6px) rotate(-135deg);
 }
+
 .sb-cls-mn span:last-child {
 	transform: translateY(-6px) rotate(-45deg);
 }
@@ -145,23 +154,28 @@
 	// transition: all 0.25s cubic-bezier(0.6, 0.05, 0.28, 0.91);
 }
 
-// @media screen and (min-width: 992px) {
+@media screen and (max-width: 1024px){
+	
+	:root{
+		--sb-widthMenu: 600px;
+	}
+	
+}
 
-// 	.sb-tg-mn{
-// 		display: none;
-// 	}
-// 	.sb-mn{
-// 		position: static;
-// 		opacity: 1;
-// 		width: auto;
-// 		height: auto;
-// 		top: auto;
-// 		right: auto;
-// 	}
-// 	.sb-mn__ls{
-// 		position: static;
-// 		top: auto;
-// 		display: flex;
-// 		transform: none;
-// 	}
-//   }
+@media screen and (max-width: 768px){
+	
+	:root{
+		--sb-widthMenu: 396px;
+	}
+	
+}
+
+
+@media screen and (max-width: 396px){
+
+	:root{
+		--sb-widthMenu: 100%;
+	}
+
+
+}

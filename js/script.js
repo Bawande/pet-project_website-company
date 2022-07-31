@@ -1,9 +1,20 @@
+const scrolling = () => {
+	document.querySelectorAll('a[href*="#$"]')
+		.forEach(link => {
+			// console.log(link)
+			link.addEventListener('click', (e) => {
+				e.preventDefault();
+				const linkBlockId = link.getAttribute('href').slice(1);
+				const el = document.getElementById(`${linkBlockId}`)
+				el.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start'
+				})
+			})
+		})
+}
 
-
-
-// контроль/группировка слайдеров
-// firstModalSwiper.controller.control = secondModalSwiper;
-// secondModalSwiper.controller.control = firstModalSwiper;
+scrolling();
 
 // инициализация модального окна 
 MicroModal.init({

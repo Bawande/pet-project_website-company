@@ -37,7 +37,6 @@ let advanSwiper = new Swiper(advantagesSwiper, {
 		// when window width is >= 320px
 		0: {
 			slidesPerView: 1,
-			spaceBetween: 32,
 
 			grid: {
 				rows: 1,
@@ -45,10 +44,6 @@ let advanSwiper = new Swiper(advantagesSwiper, {
 		},
 		// when window width is >= 576px
 		620: {
-
-			observer: true,
-			observeParents: true,
-			observeSlideChildren: true,
 
 			slidesPerView: 2,
 			// spaceBetween: 0,
@@ -60,12 +55,7 @@ let advanSwiper = new Swiper(advantagesSwiper, {
 		// when window width is >= 1024px
 		1110: {
 
-			observer: true,
-			observeParents: true,
-			observeSlideChildren: true,
-
 			slidesPerView: 3,
-			// spaceBetween: 32,
 
 			grid: {
 				rows: 2,

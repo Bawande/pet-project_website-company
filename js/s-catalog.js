@@ -8,10 +8,28 @@ import loadInitialCards from "./mod-catalog_load-cards.mjs"
 import loadInitialFilters from "./mod-catalog_load-filter.mjs"
 import filtersDropDownMenu from "./mod-catalog_drop-menu.mjs"
 
+const cards = [];
 
-localStorage.setItem("product", JSON.stringify(pruductDBJSON));
+function isLocalStorageAvailable() {
+	var test = 'test';
+	try {
+		localStorage.setItem(test, test);
+		localStorage.removeItem(test);
+		return true;
+	} catch (error) {
+		return false;
+	}
+}
 
-const cards = JSON.parse(localStorage.getItem("product"));
+if (isLocalStorageAvailable()) {
+	if (!localStorage.getItem('product')) {
+		localStorage.setItem("product", JSON.stringify(pruductDBJSON));
+	}
+	cards.push(...JSON.parse(localStorage.getItem('product')));
+} else {
+	cards.push(...JSON.stringify(pruductDBJSON));
+}
+
 
 window.addEventListener('DOMContentLoaded', () => {
 

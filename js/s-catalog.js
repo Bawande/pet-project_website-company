@@ -162,9 +162,8 @@ function openOrderCard() {
 				})
 
 				// console.log(swiperBigImgOut)
-				console.log(swiperSmallImgOut)
+				// console.log(swiperSmallImgOut)
 				// modalDescription.insertAdjacentHTML('beforeend', contentOut);
-
 
 				// запускаем модальное окно
 				MicroModal.show('id-modal-product-card', {
